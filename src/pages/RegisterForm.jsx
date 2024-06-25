@@ -60,7 +60,7 @@ export default function RegisterForm() {
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 outline-primary/70 sm:text-sm"
                 />
                 <span
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer text-primary"
                   onClick={togglePasswordVisibility}
                 >
                   {showPassword ? <HiEyeOff /> : <HiEye />}
@@ -85,7 +85,7 @@ export default function RegisterForm() {
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 outline-primary/70 sm:text-sm"
                 />
                 <span
-                  className="absolute inset-y-0 right-0 pr-3 flex items-cente cursor-pointer"
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer text-primary"
                   onClick={toggleConfirmPasswordVisibility}
                 >
                   {showConfirmPassword ? <HiEyeOff /> : <HiEye />}
