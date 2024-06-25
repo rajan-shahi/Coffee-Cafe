@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import Logo from "../../assets/website/coffee_logo.png";
 import { FaCoffee } from "react-icons/fa";
-import { Link } from "react-router-dom";
 
 const Menu = [
   {
@@ -21,11 +21,17 @@ const Menu = [
   },
 ];
 
-
 const Navbar = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Scroll to the top of the page whenever the location changes (e.g., navigation)
+    window.scrollTo(0, 0);
+  }, [location.pathname]); // Run this effect whenever the pathname changes
+
   return (
     <>
-      <div className=" fixed left-0 right-0 top-0  z-50 bg-gradient-to-r from-secondary to-secondary/90 shadow-md bg-gray-900 text-white">
+      <div className="fixed left-0 right-0 top-0 z-50 bg-gradient-to-r from-secondary to-secondary/90 shadow-md bg-gray-900 text-white">
         <div className="container py-2">
           <div className="flex justify-between items-center">
             {/* Logo section */}
@@ -60,7 +66,7 @@ const Navbar = () => {
               </ul>
               <Link
                 to="/order"
-                className=" bg-primary/70 hover:scale-105 duration-200 text-white px-4 py-2 rounded-full flex items-center gap-3"
+                className="bg-primary/70 hover:scale-105 duration-200 text-white px-4 py-2 rounded-full flex items-center gap-3"
               >
                 Order
                 <FaCoffee className="text-xl text-white drop-shadow-sm cursor-pointer" />

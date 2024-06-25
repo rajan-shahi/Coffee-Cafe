@@ -48,8 +48,8 @@ const Footer = () => {
               Espresso Escape
             </p>
             <a
-              href="https://www.youtube.com/channel/UC1H-a1MKEFXRiFlGNLcy7gQ"
-              target="_blank"
+              href="/"
+             
               className="inline-block bg-[#3d2517] py-2 px-4 mt-5 text-sm rounded-full"
             >
               Visit our YouTube Channel
@@ -100,8 +100,8 @@ const Footer = () => {
                 Address
               </h1>
               <div>
-                <p className="mb-3">Noida , Uttar Pradesh</p>
-                <p>+91 1234567890</p>
+                <p className="mb-3">New-Road kathmandu Nepal</p>
+                <p>+977 9866448106</p>
 
                 {/* social links */}
                 <div className="flex items-center gap-3 mt-6">
