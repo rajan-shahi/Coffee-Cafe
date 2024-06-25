@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Logo from "../../assets/website/coffee_logo.png";
 import { FaCoffee } from "react-icons/fa";
-import { IoPeople } from "react-icons/io5";
+import { AiOutlineBars } from "react-icons/ai";
+import { IoClose } from "react-icons/io5"; // Import close icon
 
 const Menu = [
   {
@@ -28,10 +29,7 @@ const Navbar = () => {
   const loginRegisterRef = useRef(null);
 
   useEffect(() => {
-    // Scroll to the top of the page whenever the location changes (e.g., navigation)
     window.scrollTo(0, 0);
-
-    // Close the login/register dropdown when navigating to login/register page
     setShowLoginRegister(false);
   }, [location.pathname]);
 
@@ -40,20 +38,23 @@ const Navbar = () => {
       if (
         loginRegisterRef.current &&
         !loginRegisterRef.current.contains(event.target) &&
-        !event.target.closest(".login-register-dropdown") // Check if the click is inside the dropdown
+        !event.target.closest(".login-register-dropdown")
       ) {
         setShowLoginRegister(false);
       }
     };
 
     if (showLoginRegister) {
+      document.body.style.overflow = "hidden";
       document.addEventListener("mousedown", handleClickOutside);
     } else {
+      document.body.style.overflow = "auto";
       document.removeEventListener("mousedown", handleClickOutside);
     }
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+      document.body.style.overflow = "auto";
     };
   }, [showLoginRegister]);
 
@@ -61,12 +62,15 @@ const Navbar = () => {
     setShowLoginRegister(!showLoginRegister);
   };
 
+  const handleCloseClick = () => {
+    setShowLoginRegister(false);
+  };
+
   return (
     <>
       <div className="fixed left-0 right-0 top-0 z-50 bg-gradient-to-r from-secondary to-secondary/90 shadow-md bg-gray-900 text-white">
         <div className="container py-2">
           <div className="flex justify-between items-center">
-            {/* Logo section */}
             <div data-aos="fade-down" data-aos-once="true">
               <Link
                 to="/"
@@ -77,7 +81,6 @@ const Navbar = () => {
               </Link>
             </div>
 
-            {/* Link section */}
             <div
               data-aos="fade-down"
               data-aos-once="true"
@@ -98,36 +101,79 @@ const Navbar = () => {
               </ul>
               <Link
                 to="/order"
-                className="bg-primary/70 hover:scale-105 duration-200 text-white px-4 py-2 rounded-full flex items-center gap-3"
+                className="bg-primary/70 hover:scale-105 duration-200 text-white md:px-4 px-3 md:py-2 py-1 rounded-full flex items-center gap-3"
               >
                 Order
                 <FaCoffee className="text-xl text-white drop-shadow-sm cursor-pointer" />
               </Link>
               <div onClick={handleIconClick}>
-                <IoPeople size={25} className="cursor-pointer" />
+                <AiOutlineBars size={30} className="cursor-pointer" />
               </div>
             </div>
           </div>
         </div>
         {showLoginRegister && (
-          <div
-            ref={loginRegisterRef}
-            className="absolute flex flex-col  gap-3 top-16 right-4 bg-white text-black p-4 rounded shadow-lg login-register-dropdown"
-          >
-            <Link
-              to={"/login"}
-              className="text-md  hover:text-gray-500 duration-500"
-              onClick={() => setShowLoginRegister(false)}
+          <>
+            <div className="fixed inset-0 bg-black/80 z-40"></div>
+            <div
+              ref={loginRegisterRef}
+              className="fixed top-0 right-0 h-full w-64 bg-white text-black p-4 z-50 shadow-lg transform transition-transform duration-300"
             >
-              Login
-            </Link>
-            <Link
-              to={"/registerForm"}
-              className="md mb-2 hover:text-gray-500 duration-500"
-            >
-              Register
-            </Link>
-          </div>
+              <div className="flex flex-col gap-3 mt-4">
+                <div className="flex justify-between ">
+                  <Link
+                    to="/"
+                    className="text-md hover:text-gray-500 duration-500"
+                    onClick={handleCloseClick}
+                  >
+                    Home
+                  </Link>
+                  <IoClose
+                    size={30}
+                    className=" cursor-pointer "
+                    onClick={handleCloseClick}
+                  />
+                </div>
+
+                <Link
+                  to="/#about"
+                  className="text-md mb-2 hover:text-gray-500 duration-500"
+                  onClick={handleCloseClick}
+                >
+                  About
+                </Link>
+                <Link
+                  to="/#about"
+                  className="text-md mb-2 hover:text-gray-500 duration-500"
+                  onClick={handleCloseClick}
+                >
+                  Services
+                </Link>
+                <Link
+                  to="/#about"
+                  className="text-md mb-2 hover:text-gray-500 duration-500"
+                  onClick={handleCloseClick}
+                >
+                  Contact Us
+                </Link>
+                
+                <Link
+                  to="/login"
+                  className="bg-primary hover:scale-105 duration-200 w-max text-white px-12 py-2 rounded-md items-center"
+                  onClick={handleCloseClick}
+                >
+                  Login
+                </Link>
+                <Link
+                  to="/registerForm"
+                  className="bg-primary hover:scale-105 duration-200 w-max mt-4 text-white px-10 py-2 rounded-md items-center"
+                  onClick={handleCloseClick}
+                >
+                  Register
+                </Link>
+              </div>
+            </div>
+          </>
         )}
       </div>
     </>

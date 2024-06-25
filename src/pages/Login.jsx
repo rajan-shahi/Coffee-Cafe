@@ -28,7 +28,7 @@ const Login = () => {
     // Handle form submission
     console.log(formData);
     // Display toast notification
-    toast.success("Message sent successfully!");
+    toast.success("Login successfully!");
     // Reset form data to clear the input fields
     setFormData({
       name: "",
