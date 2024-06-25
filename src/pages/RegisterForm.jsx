@@ -2,7 +2,7 @@ import React from "react";
 
 export default function RegisterForm() {
   return (
-    <div className=" ">
+    <div className=" md:px-0 px-4 ">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className=" text-center text-3xl   tracking-wider font-cursive font-semibold  text-primary">
           Register an Account
