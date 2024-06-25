@@ -99,7 +99,7 @@ const Order = () => {
 
     return (
       <div className="md:px-0 px-4 fixed top-0 left-0 w-full h-full flex justify-center items-center bg-gray-900 bg-opacity-80 z-50">
-        <div className="bg-white p-6 rounded-md max-w-md w-full">
+        <div className="bg-white p-6 rounded-md md:mt-12 max-w-md w-full">
           <h2 className="text-2xl  tracking-wider font-cursive  font-semibold mb-5   text-primary">
             Book Now
           </h2>
