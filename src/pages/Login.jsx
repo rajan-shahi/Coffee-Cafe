@@ -86,7 +86,7 @@ const Login = () => {
             />
             <span
               onClick={togglePasswordVisibility}
-              className="absolute right-3 top-1/2 transform cursor-pointer"
+              className="absolute right-3 top-1/2 transform text-primary cursor-pointer"
             >
               <FontAwesomeIcon icon={passwordVisible ? faEyeSlash : faEye} />
             </span>
