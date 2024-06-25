@@ -30,13 +30,17 @@ const Navbar = () => {
   useEffect(() => {
     // Scroll to the top of the page whenever the location changes (e.g., navigation)
     window.scrollTo(0, 0);
+
+    // Close the login/register dropdown when navigating to login/register page
+    setShowLoginRegister(false);
   }, [location.pathname]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
         loginRegisterRef.current &&
-        !loginRegisterRef.current.contains(event.target)
+        !loginRegisterRef.current.contains(event.target) &&
+        !event.target.closest(".login-register-dropdown") // Check if the click is inside the dropdown
       ) {
         setShowLoginRegister(false);
       }
@@ -108,9 +112,13 @@ const Navbar = () => {
         {showLoginRegister && (
           <div
             ref={loginRegisterRef}
-            className="absolute top-16 right-4 bg-white text-black p-4 rounded shadow-lg"
+            className="absolute top-16 right-4 bg-white text-black p-4 rounded shadow-lg login-register-dropdown"
           >
-            <Link to={"/login"} className="text-md  mb-2">
+            <Link
+              to={"/login"}
+              className="text-md  mb-2"
+              onClick={() => setShowLoginRegister(false)}
+            >
               Login
             </Link>
             <h2 className="md mt-4 mb-2">Register</h2>
