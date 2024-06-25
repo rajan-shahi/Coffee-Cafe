@@ -1,9 +1,17 @@
 import React, { useState } from "react";
 import { HiEye, HiEyeOff } from "react-icons/hi"; // Import eye icons from react-icons
+import { toast, Toaster } from "react-hot-toast"; // Import react-hot-toast
 
 export default function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    conpassword: "",
+    mobile: "",
+  });
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -13,17 +21,46 @@ export default function RegisterForm() {
     setShowConfirmPassword(!showConfirmPassword);
   };
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission
+    console.log(formData);
+    // Display toast notification
+    toast.success("Message sent successfully!");
+    // Reset form data to clear the input fields
+    setFormData({
+      name: "",
+      email: "",
+      password: "",
+      conpassword: "",
+      mobile: "",
+    });
+  };
+
   return (
     <div className="md:px-0 px-4">
+      <Toaster /> {/* Add Toaster component to display toast notifications */}
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="text-center text-3xl tracking-wider font-cursive font-semibold text-primary">
           Register an Account
         </h2>
       </div>
-
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <form className="space-y-6" action="#" method="POST">
+          <form
+            className="space-y-6"
+            onSubmit={handleSubmit}
+            action="#"
+            method="POST"
+          >
             <div>
               <label
                 htmlFor="username"
@@ -33,12 +70,14 @@ export default function RegisterForm() {
               </label>
               <div className="mt-1">
                 <input
-                  id="username"
-                  name="username"
+                  id="name"
+                  name="name"
                   type="text"
                   autoComplete="username"
                   required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 outline-primary/70 sm:text-sm"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="appearance-none bg-gray-100 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 outline-primary/70 sm:text-sm"
                 />
               </div>
             </div>
@@ -57,7 +96,9 @@ export default function RegisterForm() {
                   type={showPassword ? "text" : "password"}
                   autoComplete="new-password"
                   required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 outline-primary/70 sm:text-sm"
+                  value={formData.password}
+                  onChange={handleChange}
+                  className="appearance-none bg-gray-100 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 outline-primary/70 sm:text-sm"
                 />
                 <span
                   className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer text-primary"
@@ -78,11 +119,13 @@ export default function RegisterForm() {
               <div className="mt-1 relative">
                 <input
                   id="confirm-password"
-                  name="confirm-password"
+                  name="conpassword"
                   type={showConfirmPassword ? "text" : "password"}
                   autoComplete="new-password"
                   required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 outline-primary/70 sm:text-sm"
+                  value={formData.conpassword}
+                  onChange={handleChange}
+                  className="appearance-none bg-gray-100 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 outline-primary/70 sm:text-sm"
                 />
                 <span
                   className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer text-primary"
@@ -107,7 +150,9 @@ export default function RegisterForm() {
                   type="email"
                   autoComplete="email"
                   required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 outline-primary/70 sm:text-sm"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="appearance-none bg-gray-100 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 outline-primary/70 sm:text-sm"
                 />
               </div>
             </div>
@@ -126,7 +171,9 @@ export default function RegisterForm() {
                   type="tel"
                   autoComplete="tel"
                   required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 outline-primary/70 sm:text-sm"
+                  value={formData.mobile}
+                  onChange={handleChange}
+                  className="appearance-none bg-gray-100 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 outline-primary/70 sm:text-sm"
                 />
               </div>
             </div>

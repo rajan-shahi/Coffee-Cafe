@@ -89,7 +89,7 @@ const Navbar = () => {
                   <li key={menu.id}>
                     <a
                       href={menu.link}
-                      className="inline-block text-xl py-4 px-4 text-white/70 hover:text-white duration-200"
+                      className="inline-block text-xl py-4 px-4 text-white/70 hover:text-white/ duration-200"
                     >
                       {menu.name}
                     </a>
