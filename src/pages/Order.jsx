@@ -206,7 +206,7 @@ const Order = () => {
   return (
     <div className="flex md:px-0 px-4 justify-center items-center">
       <div className="font-sans w-full md:w-10/12">
-        <h1 className="text-2xl  tracking-wider font-cursive font-semibold text-gray-700 text-center">
+        <h1 className="text-2xl  tracking-wider font-cursive font-semibold  text-primary text-center">
           Booking An Appointment
         </h1>
 
