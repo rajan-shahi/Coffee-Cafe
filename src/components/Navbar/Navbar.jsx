@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Logo from "../../assets/website/coffee_logo.png";
 import { FaCoffee } from "react-icons/fa";
-import { AiOutlineBars } from "react-icons/ai";
+import { HiOutlineBars3 } from "react-icons/hi2";
 import { IoClose } from "react-icons/io5"; // Import close icon
 
 const Menu = [
@@ -92,7 +92,7 @@ const Navbar = () => {
                   <li key={menu.id}>
                     <a
                       href={menu.link}
-                      className="inline-block text-xl py-4 px-4 text-white/70 hover:text-white/ duration-200"
+                      className="inline-block text-xl py-4 px-4 text-white/70 hover:text-white duration-200"
                     >
                       {menu.name}
                     </a>
@@ -107,7 +107,7 @@ const Navbar = () => {
                 <FaCoffee className="text-xl text-white drop-shadow-sm cursor-pointer" />
               </Link>
               <div onClick={handleIconClick}>
-                <AiOutlineBars size={30} className="cursor-pointer" />
+                <HiOutlineBars3 size={30} className="cursor-pointer" />
               </div>
             </div>
           </div>
@@ -130,7 +130,7 @@ const Navbar = () => {
                   </Link>
                   <IoClose
                     size={30}
-                    className=" cursor-pointer "
+                    className=" cursor-pointer text-primary font-extrabold "
                     onClick={handleCloseClick}
                   />
                 </div>
