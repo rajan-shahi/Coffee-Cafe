@@ -92,7 +92,7 @@ const Login = () => {
             </span>
           </div>
           <div className="flex justify-end">
-            <div className="text-sm text-blue-600 hover:underline cursor-pointer">
+            <div className="text-sm  text-primary/90 hover:underline cursor-pointer">
               Forgot Password?
             </div>
           </div>

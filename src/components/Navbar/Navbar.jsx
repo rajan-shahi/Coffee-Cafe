@@ -82,7 +82,7 @@ const Navbar = () => {
               data-aos="fade-down"
               data-aos-once="true"
               data-aos-delay="300"
-              className="flex justify-between items-center gap-8"
+              className="flex justify-between items-center md:gap-8 gap-4"
             >
               <ul className="hidden sm:flex items-center gap-4">
                 {Menu.map((menu) => (
@@ -116,7 +116,7 @@ const Navbar = () => {
           >
             <Link
               to={"/login"}
-              className="text-md  mb-2"
+              className="text-md  hover:text-gray-600 duration-500 mb-2"
               onClick={() => setShowLoginRegister(false)}
             >
               Login
