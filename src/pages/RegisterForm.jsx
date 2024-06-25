@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { HiEye, HiEyeOff } from "react-icons/hi"; // Import eye icons from react-icons
-import { toast, Toaster } from "react-hot-toast"; // Import react-hot-toast
+import { HiEye, HiEyeOff } from "react-icons/hi";
+import { toast, Toaster } from "react-hot-toast";
+import { useNavigate } from "react-router-dom"; // Import useNavigate from react-router-dom
 
 export default function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -12,6 +13,8 @@ export default function RegisterForm() {
     conpassword: "",
     mobile: "",
   });
+
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -31,10 +34,33 @@ export default function RegisterForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Validate form data
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.password ||
+      !formData.conpassword ||
+      !formData.mobile
+    ) {
+      toast.error("Please fill out all fields.");
+      return;
+    }
+
+    if (formData.password !== formData.conpassword) {
+      toast.error("Passwords do not match.");
+      return;
+    }
+
     // Handle form submission
     console.log(formData);
-    // Display toast notification
-    toast.success("Message sent successfully!");
+    toast.success("Registration successful!");
+
+    // Redirect to login page after successful registration
+    setTimeout(() => {
+      navigate("/login");
+    }, 2000);
+
     // Reset form data to clear the input fields
     setFormData({
       name: "",
@@ -47,12 +73,13 @@ export default function RegisterForm() {
 
   return (
     <div className="md:px-0 px-4">
-      <Toaster /> {/* Add Toaster component to display toast notifications */}
+      <Toaster />
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="text-center text-3xl tracking-wider font-cursive font-semibold text-primary">
           Register an Account
         </h2>
       </div>
+
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <form
