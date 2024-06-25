@@ -100,7 +100,7 @@ const Order = () => {
     return (
       <div className="md:px-0 px-4 fixed top-0 left-0 w-full h-full flex justify-center items-center bg-gray-900 bg-opacity-80 z-50">
         <div className="bg-white p-6 rounded-md max-w-md w-full">
-          <h2 className="text-2xl  font-semibold mb-5  text-green-700">
+          <h2 className="text-2xl  tracking-wider font-cursive  font-semibold mb-5   text-primary">
             Book Now
           </h2>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -206,7 +206,7 @@ const Order = () => {
   return (
     <div className="flex md:px-0 px-4 justify-center items-center">
       <div className="font-sans w-full md:w-10/12">
-        <h1 className="text-2xl font-semibold text-gray-800 text-center">
+        <h1 className="text-2xl  tracking-wider font-cursive font-semibold text-gray-700 text-center">
           Booking An Appointment
         </h1>
 

@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Logo from "../../assets/website/coffee_logo.png";
 import { FaCoffee } from "react-icons/fa";
+import { IoPeople } from "react-icons/io5";
 
 const Menu = [
   {
@@ -23,11 +24,38 @@ const Menu = [
 
 const Navbar = () => {
   const location = useLocation();
+  const [showLoginRegister, setShowLoginRegister] = useState(false);
+  const loginRegisterRef = useRef(null);
 
   useEffect(() => {
     // Scroll to the top of the page whenever the location changes (e.g., navigation)
     window.scrollTo(0, 0);
-  }, [location.pathname]); // Run this effect whenever the pathname changes
+  }, [location.pathname]);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        loginRegisterRef.current &&
+        !loginRegisterRef.current.contains(event.target)
+      ) {
+        setShowLoginRegister(false);
+      }
+    };
+
+    if (showLoginRegister) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showLoginRegister]);
+
+  const handleIconClick = () => {
+    setShowLoginRegister(!showLoginRegister);
+  };
 
   return (
     <>
@@ -50,7 +78,7 @@ const Navbar = () => {
               data-aos="fade-down"
               data-aos-once="true"
               data-aos-delay="300"
-              className="flex justify-between items-center gap-4"
+              className="flex justify-between items-center gap-8"
             >
               <ul className="hidden sm:flex items-center gap-4">
                 {Menu.map((menu) => (
@@ -71,9 +99,23 @@ const Navbar = () => {
                 Order
                 <FaCoffee className="text-xl text-white drop-shadow-sm cursor-pointer" />
               </Link>
+              <div onClick={handleIconClick}>
+                <IoPeople size={25} className="cursor-pointer" />
+              </div>
             </div>
           </div>
         </div>
+        {showLoginRegister && (
+          <div
+            ref={loginRegisterRef}
+            className="absolute top-16 right-4 bg-white text-black p-4 rounded shadow-lg"
+          >
+            <Link to={"/login"} className="text-md  mb-2">
+              Login
+            </Link>
+            <h2 className="md mt-4 mb-2">Register</h2>
+          </div>
+        )}
       </div>
     </>
   );
