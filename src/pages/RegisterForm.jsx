@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import { HiEye, HiEyeOff } from "react-icons/hi"; // Import eye icons from react-icons
 
 export default function RegisterForm() {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const toggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
+
   return (
-    <div className=" md:px-0 px-4 ">
+    <div className="md:px-0 px-4">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <h2 className=" text-center text-3xl   tracking-wider font-cursive font-semibold  text-primary">
+        <h2 className="text-center text-3xl tracking-wider font-cursive font-semibold text-primary">
           Register an Account
         </h2>
       </div>
@@ -26,7 +38,7 @@ export default function RegisterForm() {
                   type="text"
                   autoComplete="username"
                   required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400  outline-primary/70 sm:text-sm"
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 outline-primary/70 sm:text-sm"
                 />
               </div>
             </div>
@@ -38,15 +50,21 @@ export default function RegisterForm() {
               >
                 Password
               </label>
-              <div className="mt-1">
+              <div className="mt-1 relative">
                 <input
                   id="password"
                   name="password"
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   autoComplete="new-password"
                   required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400  outline-primary/70 sm:text-sm"
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 outline-primary/70 sm:text-sm"
                 />
+                <span
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
+                  onClick={togglePasswordVisibility}
+                >
+                  {showPassword ? <HiEyeOff /> : <HiEye />}
+                </span>
               </div>
             </div>
 
@@ -57,15 +75,21 @@ export default function RegisterForm() {
               >
                 Confirm Password
               </label>
-              <div className="mt-1">
+              <div className="mt-1 relative">
                 <input
                   id="confirm-password"
                   name="confirm-password"
-                  type="password"
+                  type={showConfirmPassword ? "text" : "password"}
                   autoComplete="new-password"
                   required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400  outline-primary/70 sm:text-sm"
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 outline-primary/70 sm:text-sm"
                 />
+                <span
+                  className="absolute inset-y-0 right-0 pr-3 flex items-cente cursor-pointer"
+                  onClick={toggleConfirmPasswordVisibility}
+                >
+                  {showConfirmPassword ? <HiEyeOff /> : <HiEye />}
+                </span>
               </div>
             </div>
 
@@ -83,7 +107,7 @@ export default function RegisterForm() {
                   type="email"
                   autoComplete="email"
                   required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400  outline-primary/70 sm:text-sm"
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 outline-primary/70 sm:text-sm"
                 />
               </div>
             </div>
@@ -102,7 +126,7 @@ export default function RegisterForm() {
                   type="tel"
                   autoComplete="tel"
                   required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400  outline-primary/70 sm:text-sm"
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 outline-primary/70 sm:text-sm"
                 />
               </div>
             </div>
@@ -110,7 +134,7 @@ export default function RegisterForm() {
             <div>
               <button
                 type="submit"
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white  bg-primary hover:bg-primary/90 duration-300 focus:outline-none  "
+                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary/90 duration-300 focus:outline-none"
               >
                 Register
               </button>
