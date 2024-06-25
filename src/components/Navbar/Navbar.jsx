@@ -112,16 +112,21 @@ const Navbar = () => {
         {showLoginRegister && (
           <div
             ref={loginRegisterRef}
-            className="absolute top-16 right-4 bg-white text-black p-4 rounded shadow-lg login-register-dropdown"
+            className="absolute flex flex-col  gap-3 top-16 right-4 bg-white text-black p-4 rounded shadow-lg login-register-dropdown"
           >
             <Link
               to={"/login"}
-              className="text-md  hover:text-gray-600 duration-500 mb-2"
+              className="text-md  hover:text-gray-500 duration-500"
               onClick={() => setShowLoginRegister(false)}
             >
               Login
             </Link>
-            <h2 className="md mt-4 mb-2">Register</h2>
+            <Link
+              to={"/registerForm"}
+              className="md mb-2 hover:text-gray-500 duration-500"
+            >
+              Register
+            </Link>
           </div>
         )}
       </div>

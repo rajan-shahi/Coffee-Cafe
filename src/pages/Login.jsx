@@ -43,7 +43,7 @@ const Login = () => {
         onSubmit={handleSubmit}
         className="relative space-y-3 w-full md:w-max rounded-md bg-white md:p-10 p-6 shadow-xl border border-gray-100"
       >
-        <h1 className="text-xl font-semibold lg:text-2xl">Login</h1>
+        <h1 className="text-xl font-semibold lg:text-2xl text-primary ">Login</h1>
         <p className="pb-4 text-gray-500">Sign in to access your account</p>
         <div className="grid grid-cols-1 gap-6">
           <div>

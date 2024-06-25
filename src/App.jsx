@@ -7,6 +7,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Order from "./pages/Order.jsx";
 import Login from "./pages/Login.jsx";
+import RegisterForm from "./pages/RegisterForm.jsx";
 // Import Toaster if it's a custom component or from a library
 // import { Toaster } from "react-hot-toast"; // Example if using react-hot-toast
 
@@ -30,7 +31,7 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/order" element={<Order />} />
             <Route path="/login" element={<Login />} />
-
+            <Route path="/registerForm" element={<RegisterForm />} />
           </Routes>
         </div>
       </BrowserRouter>
