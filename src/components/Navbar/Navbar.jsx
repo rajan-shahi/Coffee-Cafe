@@ -150,13 +150,13 @@ const Navbar = () => {
                   Services
                 </Link>
                 <Link
-                  to="/"
+                  to="/contactSection"
                   className="text-md mb-2 hover:text-gray-500 duration-500"
                   onClick={handleCloseClick}
                 >
                   Contact Us
                 </Link>
-                
+
                 <Link
                   to="/login"
                   className="bg-primary hover:scale-105 duration-200 w-max text-white px-12 py-2 rounded-md items-center"

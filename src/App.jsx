@@ -9,6 +9,7 @@ import Order from "./pages/Order.jsx";
 import Login from "./pages/Login.jsx";
 import RegisterForm from "./pages/RegisterForm.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
+import ContactSection from "./pages/ContactSection.jsx";
 // Import Toaster if it's a custom component or from a library
 // import { Toaster } from "react-hot-toast"; // Example if using react-hot-toast
 
@@ -33,8 +34,8 @@ const App = () => {
             <Route path="/order" element={<Order />} />
             <Route path="/login" element={<Login />} />
             <Route path="/registerForm" element={<RegisterForm />} />
+            <Route path="/contactSection" element={<ContactSection />} />
             <Route path="/dashboard" element={<Dashboard />} />
-
           </Routes>
         </div>
       </BrowserRouter>

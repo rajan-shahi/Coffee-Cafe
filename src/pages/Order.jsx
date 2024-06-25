@@ -98,7 +98,7 @@ const Order = () => {
     };
 
     return (
-      <div className="md:px-0 px-4 fixed top-0 left-0 w-full h-full flex justify-center items-center bg-gray-900 bg-opacity-80 z-50">
+      <div  className="md:px-0 px-4 fixed top-0 left-0 w-full h-full flex justify-center items-center bg-gray-900 bg-opacity-80 z-50">
         <div className="bg-white p-6 rounded-md md:mt-12 max-w-md w-full">
           <h2 className="text-2xl  tracking-wider font-cursive  font-semibold mb-5   text-primary">
             Book Now
@@ -272,7 +272,8 @@ const CartItem = ({ item, onUpdateQuantity, onRemoveItem }) => {
     <div className="grid  grid-cols-3 items-start gap-4 border-b pb-4">
       <div className="col-span-2 flex items-start gap-4">
         <div className="w-20 h-20 max-sm:w-24 max-sm:h-24 bg-gray-100 p-2 object-cover rounded-md">
-          <img
+          <img  data-aos="zoom-in"
+              data-aos-duration="300"
             src={item.image}
             alt={item.name}
             className="w-full h-full object-contain"
