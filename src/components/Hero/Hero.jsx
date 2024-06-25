@@ -46,7 +46,7 @@ const Hero = () => {
                 data-aos="fade-left"
                 className="bg-gradient-to-r from-primary to-secondary p-3 rounded-xl absolute top-10 left-10"
               >
-                <h1 className="text-white">Hey Rajan</h1>
+                <h1 className="text-white">Wow Hey</h1>
               </div>
               <div
                 data-aos="fade-right"

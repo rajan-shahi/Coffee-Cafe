@@ -136,21 +136,21 @@ const Navbar = () => {
                 </div>
 
                 <Link
-                  to="/#about"
+                  to="/"
                   className="text-md mb-2 hover:text-gray-500 duration-500"
                   onClick={handleCloseClick}
                 >
                   About
                 </Link>
                 <Link
-                  to="/#about"
+                  to="/"
                   className="text-md mb-2 hover:text-gray-500 duration-500"
                   onClick={handleCloseClick}
                 >
                   Services
                 </Link>
                 <Link
-                  to="/#about"
+                  to="/"
                   className="text-md mb-2 hover:text-gray-500 duration-500"
                   onClick={handleCloseClick}
                 >
