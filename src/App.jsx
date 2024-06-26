@@ -10,8 +10,6 @@ import Login from "./pages/Login.jsx";
 import RegisterForm from "./pages/RegisterForm.jsx";
 import ContactSection from "./pages/ContactSection.jsx";
 import DasLayout from "./dasLayout/DasLayout.jsx";
-// Import Toaster if it's a custom component or from a library
-// import { Toaster } from "react-hot-toast"; // Example if using react-hot-toast
 
 const App = () => {
   React.useEffect(() => {
@@ -21,7 +19,6 @@ const App = () => {
       easing: "ease-in",
       delay: 100,
     });
-    // AOS.refresh(); // Usually, you don't need to call refresh right after init
   }, []);
 
   const location = useLocation();
