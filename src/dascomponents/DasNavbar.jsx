@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Dashboard() {
+export default function DasNavbar() {
   return (
     <div>
-      dasboard
+      navbar
     </div>
   )
 }
