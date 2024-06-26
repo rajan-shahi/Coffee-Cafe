@@ -1,6 +1,7 @@
 import React from "react";
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa6";
 import FooterBg from "../../assets/website/coffee-footer.jpg";
+import { Link } from "react-router-dom";
 
 const FooterLinks = [
   {
@@ -8,12 +9,32 @@ const FooterLinks = [
     link: "/#",
   },
   {
-    title: "About",
-    link: "/#about",
+    title: "Services",
+    link: "/#",
   },
   {
     title: "Contact",
-    link: "/#contact",
+    link: "/#",
+  },
+  {
+    title: "Blog",
+    link: "/#blog",
+  },
+];
+
+
+const ImpLinks = [
+  {
+    title: "Home",
+    link: "/#",
+  },
+  {
+    title: "Services",
+    link: "/service",
+  },
+  {
+    title: "Contact",
+    link: "/contactSection",
   },
   {
     title: "Blog",
@@ -47,13 +68,12 @@ const Footer = () => {
               Crafted Coffee, Cozy Vibes, Unforgettable Moments – Your Perfect
               Espresso Escape
             </p>
-            <a
-              href="/"
-             
+            <Link
+              to="/"
               className="inline-block bg-[#3d2517] py-2 px-4 mt-5 text-sm rounded-full"
             >
               Visit our YouTube Channel
-            </a>
+            </Link>
           </div>
 
           {/* Footer links */}
@@ -63,14 +83,14 @@ const Footer = () => {
                 Important Links
               </h1>
               <ul className="space-y-3">
-                {FooterLinks.map((data, index) => (
+                {ImpLinks.map((data, index) => (
                   <li key={index}>
-                    <a
-                      href={data.link}
+                    <Link
+                      to={data.link}
                       className="inline-block hover:scale-105 duration-200"
                     >
                       {data.title}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>

@@ -42,9 +42,9 @@ const Banner = () => {
                   data-aos="fade-up"
                   className="text-sm text-gray-500 tracking-wide leading-5"
                 >
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Eaque reiciendis inventore iste ratione ex alias quis magni at
-                  optio
+                  Premium blend coffee merges the finest beans for a rich,
+                  complex flavor. Each cup offers a full-bodied experience with
+                  layered aromas and taste.
                 </p>
 
                 <div className="grid grid-cols-2 gap-6">
@@ -78,9 +78,9 @@ const Banner = () => {
                       Tea Lover
                     </h1>
                     <p className="text-sm text-gray-500">
-                      Much like writing code, brewing the perfect cup of tea
-                      requires patience, precision, and a dash of passion to
-                      create a comforting blend of flavors.
+                      Tea lovers cherish the soothing and diverse flavors of
+                     enjoying each cup's unique aroma and taste. From
+                      delicate greens to robust blacks, tea offers.
                     </p>
                   </div>
                 </div>

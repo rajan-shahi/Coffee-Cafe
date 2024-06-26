@@ -1,28 +1,29 @@
 import React from "react";
 import Img2 from "../../assets/coffee2.png";
+import img from "../../assets/coffee-white.png";
 const ServicesData = [
   {
     id: 1,
     img: Img2,
-    name: "Espresso",
+    name: "Premium Coffee",
     description:
-      "Lorem ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet ipsum dolor sit amet.",
+      "Premium coffee is crafted from the finest beans, meticulously grown and roasted to perfection. This results in a rich, complex flavor that offers a superior coffee experience.",
     aosDelay: "100",
   },
   {
     id: 2,
-    img: Img2,
-    name: "Americano",
+    img: img,
+    name: "Hot Coffee",
     description:
-      "Lorem ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet ipsum dolor sit amet",
+      "Hot coffee, brewed to perfection, offers a comforting and invigorating experience with its rich aroma and robust flavor. Ideal for any time of day, it's a timeless favorite that warms the soul.",
     aosDelay: "300",
   },
   {
     id: 3,
     img: Img2,
-    name: "Cappuccino",
+    name: "Cold Coffee",
     description:
-      "Lorem ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet ipsum dolor sit amet",
+      "Cold coffee is a refreshing alternative, combining rich coffee flavor with a chilled, invigorating twist. Perfect for hot days, it delivers a smooth, energizing boost.",
     aosDelay: "500",
   },
 ];

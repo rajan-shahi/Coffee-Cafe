@@ -1,24 +1,25 @@
 import React, { useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
-import c1 from "../assets/coffee-white.png";
+import c1 from "../assets/coffee2.png";
+import img from "../assets/coffee-white.png";
 
 const Order = () => {
   const [cartItems, setCartItems] = useState([
     {
       id: 1,
-      name: "Milk Coffee",
-      size: "milk coffee",
+      name: "Premium Coffee",
+      size: "Premium Coffee",
       price: 170,
       quantity: 1,
       image: c1,
     },
     {
       id: 2,
-      name: "Milk Coffee",
-      size: "milk coffee",
+      name: "Hot Coffee",
+      size: "Hot Coffee",
       price: 200,
       quantity: 1,
-      image: c1,
+      image: img,
     },
     {
       id: 3,
@@ -30,11 +31,11 @@ const Order = () => {
     },
     {
       id: 4,
-      name: "Milk Coffee",
-      size: "Milk Coffee",
+      name: "Cold Coffee",
+      size: "Cold Coffee",
       price: 150,
       quantity: 1,
-      image: c1,
+      image: img,
     },
   ]);
 
