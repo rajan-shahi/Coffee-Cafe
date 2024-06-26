@@ -93,7 +93,7 @@ const Order = () => {
       // Handle form submission
       console.log(formData);
       // Display toast notification
-      toast.success("book Now successfully!");
+      toast.success("Order Now successfully!");
       // Close the form after submission
       onClose();
     };
@@ -102,7 +102,7 @@ const Order = () => {
       <div  className="md:px-0 px-4 fixed top-0 left-0 w-full h-full flex justify-center items-center bg-gray-900 bg-opacity-80 z-50">
         <div className="bg-white p-6 rounded-md md:mt-12 max-w-md w-full">
           <h2 className="text-2xl  tracking-wider font-cursive  font-semibold mb-5   text-primary">
-            Book Now
+            Order Now
           </h2>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
@@ -207,12 +207,12 @@ const Order = () => {
   return (
     <div className="flex md:px-0 px-4 justify-center items-center">
       <div className="font-sans w-full md:w-10/12">
-        <h1 className="text-2xl  tracking-wider font-cursive font-semibold  text-primary text-center">
+        <h1  data-aos="fade-down" data-aos-once="true" className="text-2xl  tracking-wider font-cursive font-semibold  text-primary text-center">
           Booking An Appointment
         </h1>
 
         <div className="grid md:grid-cols-3 gap-8 mt-16">
-          <div className="md:col-span-2 space-y-4 md:w-9/12">
+          <div  data-aos="fade-left" data-aos-once="true" className="md:col-span-2 space-y-4 md:w-9/12">
             {cartItems.map((item) => (
               <CartItem
                 key={item.id}
@@ -223,7 +223,7 @@ const Order = () => {
             ))}
           </div>
 
-          <div className="bg-gray-100 h-max rounded-md p-10">
+          <div  data-aos="fade-up" data-aos-once="true" className="bg-gray-100 h-max rounded-md p-10">
             <h3 className="text-lg max-sm:text-base font-bold text-gray-800 border-b border-gray-300 pb-2">
               Order Summary
             </h3>
@@ -248,7 +248,7 @@ const Order = () => {
                 onClick={() => setShowContactForm(true)}
                 className="w-full py-2  bg-primary  hover:bg-primary/90 duration-500 text-white font-semibold rounded-md"
               >
-                Book Now
+               Order Now
               </button>
             </div>
           </div>
@@ -282,7 +282,7 @@ const CartItem = ({ item, onUpdateQuantity, onRemoveItem }) => {
         </div>
 
         <div className="flex flex-col">
-          <h3 className="text-base font-semibold text-gray-800">{item.name}</h3>
+          <h3  className="text-base font-semibold text-gray-800">{item.name}</h3>
           <p className="text-xs font-semibold text-gray-500 mt-0.5">
             Name: {item.size}
           </p>
