@@ -10,6 +10,7 @@ import Login from "./pages/Login.jsx";
 import RegisterForm from "./pages/RegisterForm.jsx";
 import ContactSection from "./pages/ContactSection.jsx";
 import DasLayout from "./dasLayout/DasLayout.jsx";
+import Service from "./pages/Service.jsx";
 
 const App = () => {
   React.useEffect(() => {
@@ -34,7 +35,10 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/registerForm" element={<RegisterForm />} />
           <Route path="/contactSection" element={<ContactSection />} />
+          <Route path="/service" element={<Service />} />
           <Route path="/dasLayout" element={<DasLayout />} />
+         
+
         </Routes>
       </div>
       {location.pathname !== "/dasLayout" && <Footer />}

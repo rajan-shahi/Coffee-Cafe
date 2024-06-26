@@ -14,7 +14,7 @@ const Menu = [
   {
     id: 2,
     name: "Services",
-    link: "/#services",
+    link: "/service",
   },
   {
     id: 3,
@@ -90,12 +90,12 @@ const Navbar = () => {
               <ul className="hidden sm:flex items-center gap-4">
                 {Menu.map((menu) => (
                   <li key={menu.id}>
-                    <a
-                      href={menu.link}
+                    <Link
+                      to={menu.link}
                       className="inline-block text-xl py-4 px-4 text-white/70 hover:text-white duration-200"
                     >
                       {menu.name}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
