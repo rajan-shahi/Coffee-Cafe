@@ -8,7 +8,7 @@ const Order = () => {
       id: 1,
       name: "Milk Coffee",
       size: "milk coffee",
-      price: 130,
+      price: 170,
       quantity: 1,
       image: c1,
     },
