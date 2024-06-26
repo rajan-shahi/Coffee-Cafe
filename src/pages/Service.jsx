@@ -188,7 +188,7 @@ const Service = () => {
           </span>
         </p>
         <Link data-aos="fade-up" to={"/order"}>
-          <button className="px-5  text-sm md:mt-0 mt-5 py-3 rounded-md  hover:bg-gray-200 tracking-wider font-cursive bg-white duration-300">
+          <button className="px-5  text-xs md:mt-0 mt-5 py-3 rounded-md  hover:bg-gray-200 tracking-wider font-cursive bg-white duration-300">
             BOOK AN APPOINTMENT
           </button>{" "}
         </Link>
