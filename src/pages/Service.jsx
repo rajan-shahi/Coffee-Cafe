@@ -155,20 +155,30 @@ const Service = () => {
             className="p-10 flex flex-col items-center text-center group md:lg:xl:border-r md:lg:xl:border-b hover:bg-slate-50 cursor-pointer"
           >
             <span
-              className={`p-5 rounded-full  ${card.bgColor} text-white shadow-lg   duration-300 ${card.shadowColor}`}
+              data-aos="fade-left"
+              className={`p-5 rounded-full ${card.bgColor} text-white shadow-lg   duration-300 ${card.shadowColor}`}
             >
               {card.iconPath}
             </span>
-            <p className="text-xl font-medium text-slate-700 mt-3">
+            <p
+              data-aos="fade-right"
+              className="text-xl font-medium text-slate-700 mt-3"
+            >
               {card.title}
             </p>
-            <p className="mt-2 text-sm text-slate-500">{card.description}</p>
+            <p
+              data-aos="fade-up"
+              data-aos-delay="300"
+              className="mt-2 text-sm text-slate-500"
+            >
+              {card.description}
+            </p>
           </div>
         ))}
       </div>
 
       <div className="w-full  bg-primary shadow-xl shadow-indigo-200 py-10 md:px-20 px-4 md:flex justify-between items-center">
-        <p className="text-white">
+        <p data-aos="fade-up" className="text-white">
           <span className="md:text-4xl text-3xl font-medium  tracking-wider font-cursive ">
             Still Confused ?
           </span>{" "}
@@ -177,11 +187,10 @@ const Service = () => {
             Book For Free Career Consultation Today!
           </span>
         </p>
-        <Link
-          to={"/order"}
-          className="px-5  text-sm md:mt-0 mt-5 py-3 rounded-md  hover:bg-gray-200 tracking-wider font-cursive bg-white duration-300"
-        >
-          BOOK AN APPOINTMENT
+        <Link data-aos="fade-up" to={"/order"}>
+          <button className="px-5  text-sm md:mt-0 mt-5 py-3 rounded-md  hover:bg-gray-200 tracking-wider font-cursive bg-white duration-300">
+            BOOK AN APPOINTMENT
+          </button>{" "}
         </Link>
       </div>
     </div>

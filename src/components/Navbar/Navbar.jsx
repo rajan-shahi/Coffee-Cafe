@@ -143,7 +143,7 @@ const Navbar = () => {
                   About
                 </Link>
                 <Link
-                  to="/"
+                  to="/service"
                   className="text-md mb-2 hover:text-gray-400 text-white duration-500"
                   onClick={handleCloseClick}
                 >
