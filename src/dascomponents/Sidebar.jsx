@@ -27,10 +27,6 @@ const Sidebar = () => {
           ),
           link: "#",
         },
-      ],
-    },
-    {
-      items: [
         {
           title: "Messages",
           icon: (
