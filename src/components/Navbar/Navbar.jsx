@@ -114,44 +114,44 @@ const Navbar = () => {
         </div>
         {showLoginRegister && (
           <>
-            <div className="fixed inset-0 bg-black/80 z-40"></div>
+            <div className="fixed inset-0 bg-black/80 z-50"></div>
             <div
               ref={loginRegisterRef}
-              className="fixed top-0 right-0 h-full w-64 bg-white text-black p-4 z-50 shadow-lg transform transition-transform duration-300"
+              className="fixed top-0 right-0 h-full w-64  bg-secondary text-black p-4 z-50 shadow-lg transform transition-transform duration-300"
             >
               <div className="flex flex-col gap-3 mt-4">
                 <div className="flex justify-between ">
                   <Link
                     to="/"
-                    className="text-md hover:text-gray-500 duration-500"
+                    className="text-md hover:text-gray-400  text-white duration-500"
                     onClick={handleCloseClick}
                   >
                     Home
                   </Link>
                   <IoClose
                     size={30}
-                    className=" cursor-pointer text-primary font-extrabold "
+                    className=" cursor-pointer text-white "
                     onClick={handleCloseClick}
                   />
                 </div>
 
                 <Link
                   to="/"
-                  className="text-md mb-2 hover:text-gray-500 duration-500"
+                  className="text-md mb-2 hover:text-gray-400 text-white duration-500"
                   onClick={handleCloseClick}
                 >
                   About
                 </Link>
                 <Link
                   to="/"
-                  className="text-md mb-2 hover:text-gray-500 duration-500"
+                  className="text-md mb-2 hover:text-gray-400 text-white duration-500"
                   onClick={handleCloseClick}
                 >
                   Services
                 </Link>
                 <Link
                   to="/contactSection"
-                  className="text-md mb-2 hover:text-gray-500 duration-500"
+                  className="text-md mb-2 hover:text-gray-400 text-white duration-500"
                   onClick={handleCloseClick}
                 >
                   Contact Us
