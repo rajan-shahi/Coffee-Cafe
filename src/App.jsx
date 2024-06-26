@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer.jsx";
 import Home from "./pages/Home.jsx";
@@ -24,22 +24,23 @@ const App = () => {
     // AOS.refresh(); // Usually, you don't need to call refresh right after init
   }, []);
 
+  const location = useLocation();
+  console.log(location.pathname);
+
   return (
     <div className=" overflow-x-hidden ">
-      <BrowserRouter>
-        <Navbar />
-        <div className="  py-28 ">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/order" element={<Order />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/registerForm" element={<RegisterForm />} />
-            <Route path="/contactSection" element={<ContactSection />} />
-            <Route path="/dasLayout" element={<DasLayout />} />
-          </Routes>
-        </div>
-      </BrowserRouter>
-      <Footer />
+      {location.pathname !== "/dasLayout" && <Navbar />}
+      <div className={`${location.pathname === "/dasLayout" ? "" : "py-28"}`}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/order" element={<Order />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/registerForm" element={<RegisterForm />} />
+          <Route path="/contactSection" element={<ContactSection />} />
+          <Route path="/dasLayout" element={<DasLayout />} />
+        </Routes>
+      </div>
+      {location.pathname !== "/dasLayout" && <Footer />}
     </div>
   );
 };
