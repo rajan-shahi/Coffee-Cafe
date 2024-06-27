@@ -11,6 +11,7 @@ import RegisterForm from "./pages/RegisterForm.jsx";
 import ContactSection from "./pages/ContactSection.jsx";
 import DasLayout from "./dasLayout/DasLayout.jsx";
 import Service from "./pages/Service.jsx";
+import About from "./pages/About.jsx";
 
 const App = () => {
   React.useEffect(() => {
@@ -36,6 +37,8 @@ const App = () => {
           <Route path="/registerForm" element={<RegisterForm />} />
           <Route path="/contactSection" element={<ContactSection />} />
           <Route path="/service" element={<Service />} />
+          <Route path="/about" element={<About />} />
+
           <Route path="/dasLayout" element={<DasLayout />} />
          
 
