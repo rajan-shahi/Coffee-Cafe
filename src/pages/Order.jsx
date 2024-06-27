@@ -273,11 +273,10 @@ const CartItem = ({ item, onUpdateQuantity, onRemoveItem }) => {
     <div className="grid  grid-cols-3 items-start gap-4 border-b pb-4">
       <div className="col-span-2 flex items-start gap-4">
         <div className="w-20 h-20 max-sm:w-24 max-sm:h-24 bg-gray-100 p-2 object-cover rounded-md">
-          <img  data-aos="zoom-in"
-              data-aos-duration="300"
+          <img  
             src={item.image}
             alt={item.name}
-            className="w-full h-full object-contain"
+            className="w-full h-full hover:rotate-[60deg] duration-700 object-contain"
           />
         </div>
 

@@ -155,7 +155,8 @@ const Service = () => {
             className="p-10 flex flex-col items-center text-center group md:lg:xl:border-r md:lg:xl:border-b border-b hover:bg-slate-50 cursor-pointer"
           >
             <span
-              data-aos="fade-left"
+               data-aos="zoom-in"
+                  data-aos-duration="1000"
               className={`p-5 rounded-full ${card.bgColor} text-white shadow-lg   duration-300 ${card.shadowColor}`}
             >
               {card.iconPath}

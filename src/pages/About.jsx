@@ -23,7 +23,11 @@ const About = () => {
           <div className="lg:col-span-3 lg:row-end-1">
             <div className="lg:flex lg:items-start">
               <div className="lg:order-2 lg:ml-5">
-                <div className="max-w-xl overflow-hidden rounded-lg">
+                <div
+                  data-aos="zoom-in"
+                  data-aos-duration="1000"
+                  className="max-w-xl overflow-hidden rounded-lg"
+                >
                   <img
                     className=" w-96 h-96 max-w-full object-cover"
                     src={currentImage}
@@ -32,8 +36,12 @@ const About = () => {
                 </div>
               </div>
 
-              <div className="mt-2 w-full lg:order-1 lg:w-32 lg:flex-shrink-0">
-                <div className="flex flex-row items-start gap-4 md:gap-0 lg:flex-col">
+              <div className="mt-5 md:mt-0 w-full lg:order-1 lg:w-32 lg:flex-shrink-0">
+                <div
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                  className="flex flex-row items-start gap-4 md:gap-0 lg:flex-col"
+                >
                   {thumbnails.map((src, index) => (
                     <button
                       key={index}
@@ -58,11 +66,16 @@ const About = () => {
           </div>
 
           <div className="lg:col-span-2 lg:row-span-2 lg:row-end-2">
-            <h1 className="text-xl  tracking-wider font-cursive  text-gray-900 sm:text-2xl">
+            <h1
+              data-aos="fade-left"
+              data-aos-duration="1000"
+              className="text-xl  tracking-wider font-cursive  text-gray-900 sm:text-2xl"
+            >
               Afro-Nepalian Coffee
             </h1>
 
-            <div className="mt-5 flex items-center">
+            <div  data-aos="fade-left"
+              data-aos-duration="1000" className="mt-5 flex items-center">
               <div className="flex items-center">
                 {Array(5)
                   .fill(null)
@@ -89,7 +102,12 @@ const About = () => {
             <h2 className="mt-8 text-base text-gray-900">Coffee Type</h2>
             <div className="mt-3 flex select-none flex-wrap items-center gap-5">
               {["Premium Coffee", "Hot Coffee", "Cold Coffee"].map((type) => (
-                <label key={type} className="">
+                <label
+                  data-aos="zoom-in"
+                  data-aos-duration="1000"
+                  key={type}
+                  className=""
+                >
                   <input
                     type="radio"
                     name="type"
@@ -109,7 +127,12 @@ const About = () => {
             </h2>
             <div className="mt-3 flex select-none flex-wrap items-center gap-6">
               {subscriptions.map((subscription) => (
-                <label key={subscription.value} className="">
+                <label
+                  data-aos="zoom-in"
+                  data-aos-duration="1000"
+                  key={subscription.value}
+                  className=""
+                >
                   <input
                     type="radio"
                     name="subscription"
@@ -127,7 +150,11 @@ const About = () => {
               ))}
             </div>
 
-            <div className="mt-10 flex flex-col md:items-center justify-between space-y-4 border-t border-b py-4 sm:flex-row sm:space-y-0">
+            <div
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              className="mt-10 flex flex-col md:items-center justify-between space-y-4 border-t border-b py-4 sm:flex-row sm:space-y-0"
+            >
               <div className="flex items-end">
                 <h1 className="text-xl">$60.50</h1>
                 <span className="text-base">/month</span>
