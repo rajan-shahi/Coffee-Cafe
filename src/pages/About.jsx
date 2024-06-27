@@ -4,6 +4,7 @@ import img1 from "../assets/coffee4.jpeg";
 import c1 from "../assets/coffee2.jpeg";
 import img3 from "../assets/coffee3.webp";
 import { Link } from "react-router-dom";
+import BannerAbout from "./BannerAbout";
 
 const About = () => {
   const [currentImage, setCurrentImage] = useState(c1);
@@ -17,8 +18,9 @@ const About = () => {
   ];
 
   return (
-    <section className=" md:px-0 px-4 flex justify-center items-center">
-      <div className=" w-full md:w-10/12 ">
+    <section className="  flex flex-col md:gap-16 gap-10 justify-center items-center">
+      <BannerAbout />
+      <div className=" md:px-0 px-4 w-full md:w-10/12 ">
         <div className="lg:col-gap-12 xl:col-gap-16  grid grid-cols-1 gap-12  lg:grid-cols-5 lg:gap-16">
           <div className="lg:col-span-3 lg:row-end-1">
             <div className="lg:flex lg:items-start">
@@ -74,8 +76,11 @@ const About = () => {
               Afro-Nepalian Coffee
             </h1>
 
-            <div  data-aos="fade-left"
-              data-aos-duration="1000" className="mt-5 flex items-center">
+            <div
+              data-aos="fade-left"
+              data-aos-duration="1000"
+              className="mt-5 flex items-center"
+            >
               <div className="flex items-center">
                 {Array(5)
                   .fill(null)
