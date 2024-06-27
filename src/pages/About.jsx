@@ -1,9 +1,15 @@
-import React from "react";
-import c1 from "../assets/coffee2.png";
-import img from "../assets/coffee-white.png";
+import React, { useState } from "react";
+import img2 from "../assets/cofee6.webp";
+import img1 from "../assets/coffee4.jpeg";
+import c1 from "../assets/coffee2.jpeg";
+import img3 from "../assets/coffee3.webp";
 import { Link } from "react-router-dom";
 
 const About = () => {
+  const [currentImage, setCurrentImage] = useState(c1);
+
+  const thumbnails = [img1, img2, img3];
+
   const subscriptions = [
     { label: "4 Months", price: "$80/mo", value: "4 Months" },
     { label: "8 Months", price: "$60/mo", value: "8 Months", checked: true },
@@ -20,31 +26,32 @@ const About = () => {
                 <div className="max-w-xl overflow-hidden rounded-lg">
                   <img
                     className=" w-96 h-96 max-w-full object-cover"
-                    src={c1}
+                    src={currentImage}
                     alt=""
                   />
                 </div>
               </div>
 
               <div className="mt-2 w-full lg:order-1 lg:w-32 lg:flex-shrink-0">
-                <div className="flex flex-row items-start lg:flex-col">
-                  {Array(3)
-                    .fill("/images/JHxMnVrtPMdcNU1s_7g7f.png")
-                    .map((src, index) => (
-                      <button
-                        key={index}
-                        type="button"
-                        className={`flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 ${
-                          index === 0 ? "border-gray-900" : "border-transparent"
-                        } text-center`}
-                      >
-                        <img
-                          className="h-full w-full object-cover"
-                          src={img}
-                          alt=""
-                        />
-                      </button>
-                    ))}
+                <div className="flex flex-row items-start gap-4 md:gap-0 lg:flex-col">
+                  {thumbnails.map((src, index) => (
+                    <button
+                      key={index}
+                      type="button"
+                      className={`flex-0 aspect-square mb-3  h-20 overflow-hidden rounded-lg border-2 ${
+                        currentImage === src
+                          ? "border-gray-900"
+                          : "border-transparent"
+                      } text-center`}
+                      onClick={() => setCurrentImage(src)}
+                    >
+                      <img
+                        className="h-full w-full object-cover"
+                        src={src}
+                        alt=""
+                      />
+                    </button>
+                  ))}
                 </div>
               </div>
             </div>
@@ -126,7 +133,8 @@ const About = () => {
                 <span className="text-base">/month</span>
               </div>
 
-              <Link to={"/order"}
+              <Link
+                to={"/order"}
                 type="button"
                 className="inline-flex items-center justify-center rounded-md border-2 border-transparent  bg-primary bg-none px-8 py-2 text-center  text-xs text-white transition-all duration-200 ease-in-out focus:shadow  w-max hover:bg-primary/90"
               >
