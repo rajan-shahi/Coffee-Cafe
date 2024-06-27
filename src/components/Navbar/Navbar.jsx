@@ -130,7 +130,7 @@ const Navbar = () => {
                   </Link>
                   <IoClose
                     size={30}
-                    className=" cursor-pointer text-white "
+                    className=" cursor-pointer text-white/95 "
                     onClick={handleCloseClick}
                   />
                 </div>
