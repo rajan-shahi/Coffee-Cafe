@@ -12,7 +12,7 @@ const Hero = () => {
               <h1
                 data-aos="fade-up"
                 data-aos-once="true"
-                className="text-5xl sm:text-6xl lg:text-7xl font-bold"
+                className="text-5xl sm:text-6xl lg:text-7xl text-white/95  font-semibold"
               >
                 We serve the richest{" "}
                 <span
