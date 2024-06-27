@@ -20,16 +20,22 @@ const ContactSection = () => {
     <div className="max-w-6xl max-lg:max-w-3xl mx-auto bg-secondary rounded-lg">
       <div className="grid lg:grid-cols-2 items-center gap-14 sm:p-8 p-6 font-[sans-serif]">
         <div>
-          <h1 className="text-4xl tracking-wider font-cursive text-gray-100">
+          <h1
+            data-aos="fade-up"
+            className="text-4xl tracking-wider font-cursive text-gray-100"
+          >
             Get in Touch
           </h1>
-          <p className="text-sm text-gray-300 mt-8 leading-relaxed">
-            Have some big idea or brand to develop and need help? Then reach
-            out, we'd love to hear about your project and provide help.
+          <p
+            data-aos="fade-up"
+            className="text-sm text-gray-300 mt-8 leading-relaxed"
+          >
+            We'd love to hear from you! Reach out via phone, email, or our
+            contact form, and we'll respond within 24 hours.
           </p>
 
           <ul className="mt-12 space-y-8">
-            <li className="flex items-center">
+            <li data-aos="fade-up" className="flex items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16px"
@@ -46,7 +52,7 @@ const ContactSection = () => {
                 info@example.com
               </a>
             </li>
-            <li className="flex items-center">
+            <li data-aos="fade-up" className="flex items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16px"
@@ -60,7 +66,7 @@ const ContactSection = () => {
                 +977 9866448106
               </a>
             </li>
-            <li className="flex items-center">
+            <li data-aos="fade-up" className="flex items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16px"
@@ -82,6 +88,7 @@ const ContactSection = () => {
         </div>
         <div>
           <form
+            data-aos="fade-left"
             onSubmit={handleSubmit}
             className="bg-gray-100 md:p-10 p-6  rounded-md"
           >
@@ -91,14 +98,14 @@ const ContactSection = () => {
                   htmlFor="firstName"
                   className="block mb-2 text-sm text-gray-700"
                 >
-                  First Name
+                  Your Name
                 </label>
                 <input
                   required
                   type="text"
                   id="firstName"
                   name="name"
-                  placeholder="enter your first name"
+                  placeholder="enter your  name"
                   className="w-full px-3 py-2 bg-white border border-gray-400 rounded-md outline-none"
                 />
               </div>
@@ -107,14 +114,14 @@ const ContactSection = () => {
                   htmlFor="lastName"
                   className="block mb-2 text-sm text-gray-700"
                 >
-                  Last Name
+                  Mobile Number
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   id="lastName"
-                  name="name"
+                  name="number"
                   required
-                  placeholder="enter your last name"
+                  placeholder="enter your mobile number"
                   className="w-full px-3 py-2 bg-white border border-gray-400 rounded-md outline-none"
                 />
               </div>

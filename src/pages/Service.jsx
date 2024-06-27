@@ -148,11 +148,11 @@ const Service = () => {
           "url('https://www.toptal.com/designers/subtlepatterns/uploads/dot-grid.png')",
       }}
     >
-      <div className="grid grid-cols-1 md:lg:xl:grid-cols-3 group bg-white shadow-xl shadow-neutral-100 border">
+      <div className="grid grid-cols-1 md:lg:xl:grid-cols-3 group bg-white shadow-xl  shadow-neutral-100 border">
         {cardData.map((card, index) => (
           <div
             key={index}
-            className="p-10 flex flex-col items-center text-center group md:lg:xl:border-r md:lg:xl:border-b hover:bg-slate-50 cursor-pointer"
+            className="p-10 flex flex-col items-center text-center group md:lg:xl:border-r md:lg:xl:border-b border-b hover:bg-slate-50 cursor-pointer"
           >
             <span
               data-aos="fade-left"
