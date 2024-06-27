@@ -99,9 +99,28 @@ const Order = () => {
     };
 
     return (
-      <div  className="md:px-0 px-4 fixed top-0 left-0 w-full h-full flex justify-center items-center bg-gray-900 bg-opacity-80 z-50">
-        <div className="bg-white p-6 rounded-md md:mt-12 max-w-md w-full">
-          <h2 className="text-2xl  tracking-wider font-cursive  font-semibold mb-5   text-primary">
+      <div className="md:px-0 px-4 fixed top-0 left-0 w-full h-full flex justify-center items-center bg-gray-900 bg-opacity-80 z-50">
+        <div className="bg-white p-6 rounded-md md:mt-12 max-w-md w-full relative">
+          <button
+            onClick={onClose}
+            className="absolute top-3 right-3 text-gray-700 hover:text-gray-900"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+          <h2 className="text-2xl tracking-wider font-cursive font-semibold mb-5 text-primary">
             Order Now
           </h2>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -141,14 +160,14 @@ const Order = () => {
             </div>
             <div>
               <label
-                htmlFor="email"
+                htmlFor="order"
                 className="block pb-1 text-sm font-medium text-gray-700"
               >
                 Order Name
               </label>
               <input
-                type="name"
-                id="email"
+                type="text"
+                id="order"
                 name="order"
                 value={formData.order}
                 onChange={handleChange}
@@ -158,18 +177,18 @@ const Order = () => {
             </div>
             <div>
               <label
-                htmlFor="email"
+                htmlFor="number"
                 className="block pb-1 text-sm font-medium text-gray-700"
               >
-                Quentity
+                Quantity
               </label>
               <input
                 type="number"
-                id="email"
+                id="number"
                 name="number"
                 value={formData.number}
                 onChange={handleChange}
-                required 
+                required
                 className="mt-1 block w-full bg-gray-100 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-primary sm:text-sm"
               />
             </div>
@@ -193,7 +212,7 @@ const Order = () => {
             <div className="flex justify-end">
               <button
                 type="submit"
-                className="inline-flex justify-center py-2 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary  hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                className="inline-flex justify-center py-2 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
               >
                 Send
               </button>
@@ -207,12 +226,20 @@ const Order = () => {
   return (
     <div className="flex md:px-0 px-4 justify-center items-center">
       <div className="font-sans w-full md:w-10/12">
-        <h1  data-aos="fade-down" data-aos-once="true" className="text-2xl  tracking-wider font-cursive font-semibold  text-primary text-center">
+        <h1
+          data-aos="fade-down"
+          data-aos-once="true"
+          className="text-2xl tracking-wider font-cursive font-semibold text-primary text-center"
+        >
           Booking An Appointment
         </h1>
 
         <div className="grid md:grid-cols-3 gap-8 mt-16">
-          <div  data-aos="fade-left" data-aos-once="true" className="md:col-span-2 space-y-4 md:w-9/12">
+          <div
+            data-aos="fade-left"
+            data-aos-once="true"
+            className="md:col-span-2 space-y-4 md:w-9/12"
+          >
             {cartItems.map((item) => (
               <CartItem
                 key={item.id}
@@ -223,7 +250,11 @@ const Order = () => {
             ))}
           </div>
 
-          <div  data-aos="fade-up" data-aos-once="true" className="bg-gray-100 h-max rounded-md p-10">
+          <div
+            data-aos="fade-up"
+            data-aos-once="true"
+            className="bg-gray-100 h-max rounded-md p-10"
+          >
             <h3 className="text-lg max-sm:text-base font-bold text-gray-800 border-b border-gray-300 pb-2">
               Order Summary
             </h3>
@@ -246,9 +277,9 @@ const Order = () => {
             <div className="mt-6 space-y-3">
               <button
                 onClick={() => setShowContactForm(true)}
-                className="w-full py-2  bg-primary  hover:bg-primary/90 duration-500 text-white font-semibold rounded-md"
+                className="w-full py-2 bg-primary hover:bg-primary/90 duration-500 text-white font-semibold rounded-md"
               >
-               Order Now
+                Order Now
               </button>
             </div>
           </div>
@@ -270,10 +301,10 @@ const CartItem = ({ item, onUpdateQuantity, onRemoveItem }) => {
   };
 
   return (
-    <div className="grid  grid-cols-3 items-start gap-4 border-b pb-4">
+    <div className="grid grid-cols-3 items-start gap-4 border-b pb-4">
       <div className="col-span-2 flex items-start gap-4">
         <div className="w-20 h-20 max-sm:w-24 max-sm:h-24 bg-gray-100 p-2 object-cover rounded-md">
-          <img  
+          <img
             src={item.image}
             alt={item.name}
             className="w-full h-full hover:rotate-[60deg] duration-700 object-contain"
@@ -281,7 +312,7 @@ const CartItem = ({ item, onUpdateQuantity, onRemoveItem }) => {
         </div>
 
         <div className="flex flex-col">
-          <h3  className="text-base font-semibold text-gray-800">{item.name}</h3>
+          <h3 className="text-base font-semibold text-gray-800">{item.name}</h3>
           <p className="text-xs font-semibold text-gray-500 mt-0.5">
             Name: {item.size}
           </p>
