@@ -190,9 +190,9 @@ const Sidebar = () => {
   ];
 
   return (
-    
+    <div className="w-screen bg-gray-100">
       <div className="h-screen w-64 ">
-        <div className="flex h-full flex-grow flex-col overflow-y-auto rounded-br-lg rounded-tr-lg bg-white shadow-md">
+        <div className="flex h-full flex-grow flex-col overflow-y-auto rounded-br-lg rounded-tr-lg bg-white pt-5 shadow-md">
           <div className="flex mt-5 items-center px-4">
             <img
               className="h-12 w-auto max-w-full align-middle"
@@ -232,7 +232,7 @@ const Sidebar = () => {
           ))}
         </div>
       </div>
-
+    </div>
   );
 };
 
