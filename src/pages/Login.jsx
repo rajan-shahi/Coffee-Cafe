@@ -2,24 +2,27 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { Toaster, toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ setIsLoggedIn }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [formData, setFormData] = useState({
-    username: "",
+    name: "",
     email: "",
     password: "",
   });
   const [errors, setErrors] = useState({
-    username: "",
+    name: "",
     email: "",
     password: "",
   });
-  const [forgotPassword, setForgotPassword] = useState(false); // Track if user is in "Forgot Password" mode
+  const [forgotPassword, setForgotPassword] = useState(false);
 
-  const fixedUsername = "Rajan Shahi";
+  const fixedname = "Rajan Shahi";
   const fixedEmail = "rajanshahi1267@gmail.com";
   const fixedPassword = "Rajan@2058";
+
+  const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -36,18 +39,18 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const { username, email, password } = formData;
+    const { name, email, password } = formData;
 
     let valid = true;
     let newErrors = {
-      username: "",
+      name: "",
       email: "",
       password: "",
     };
 
-    if (username !== fixedUsername) {
+    if (name !== fixedname) {
       valid = false;
-      newErrors.username = "Invalid username";
+      newErrors.name = "Invalid name";
     }
 
     if (email !== fixedEmail) {
@@ -64,15 +67,16 @@ const Login = () => {
 
     if (valid) {
       toast.success("Login successfully!");
+      setIsLoggedIn(true);
       setFormData({
-        username: "",
+        name: "",
         email: "",
         password: "",
       });
       // Redirect to dasLayout page
-      window.location.href = "/dasLayout";
+      navigate("/dasLayout");
     } else {
-      toast.error("Invalid username, email, or password");
+      toast.error("Invalid name, email, or password");
     }
   };
 
@@ -83,12 +87,12 @@ const Login = () => {
   const handleBackToLogin = () => {
     setForgotPassword(false);
     setFormData({
-      username: "",
+      name: "",
       email: "",
       password: "",
     });
     setErrors({
-      username: "",
+      name: "",
       email: "",
       password: "",
     });
@@ -108,10 +112,10 @@ const Login = () => {
   };
 
   return (
-    <div className="md:px-0 px-4 flex justify-center md:h-[80vh] items-center">
+    <div className="md:px-0 px-4 flex justify-center items-center">
       <form
         onSubmit={forgotPassword ? handleResetPassword : handleSubmit}
-        className="relative space-y-3 w-full md:w-max rounded-md bg-white md:p-10 p-6 shadow-xl border border-gray-100"
+        className="relative space-y-3  w-full md:w-max rounded-md bg-white  p-6 shadow-xl border border-gray-100"
       >
         <h1 className="text-xl font-semibold lg:text-2xl text-primary">
           {forgotPassword ? "Forgot Password" : "Login"}
@@ -162,21 +166,21 @@ const Login = () => {
         ) : (
           <div className="grid grid-cols-1 gap-6">
             <div>
-              <label htmlFor="username">Username</label>
+              <label htmlFor="name">Username</label>
               <input
                 type="text"
-                id="username"
-                name="username"
-                value={formData.username}
+                id="name"
+                name="name"
+                value={formData.name}
                 onChange={handleChange}
                 placeholder="Username"
                 className={`mt-2 h-12 w-full rounded-md bg-gray-100 px-3 outline-primary ${
-                  errors.username && "border border-red-500"
+                  errors.name && "border border-red-500"
                 }`}
                 required
               />
-              {errors.username && (
-                <p className="text-red-500 text-sm">{errors.username}</p>
+              {errors.name && (
+                <p className="text-red-500 text-sm">{errors.name}</p>
               )}
             </div>
             <div>
@@ -255,17 +259,17 @@ export default Login;
 // const Login = () => {
 //   const [passwordVisible, setPasswordVisible] = useState(false);
 //   const [formData, setFormData] = useState({
-//     username: "",
+//     name: "",
 //     email: "",
 //     password: "",
 //   });
 //   const [errors, setErrors] = useState({
-//     username: "",
+//     name: "",
 //     email: "",
 //     password: "",
 //   });
 
-//   const fixedUsername = "Rajan Shahi";
+//   const fixedname = "Rajan Shahi";
 //   const fixedEmail = "rajanshahi1267@gmail.com";
 //   const fixedPassword = "Rajan@2058";
 
@@ -284,18 +288,18 @@ export default Login;
 //   const handleSubmit = (e) => {
 //     e.preventDefault();
 
-//     const { username, email, password } = formData;
+//     const { name, email, password } = formData;
 
 //     let valid = true;
 //     let newErrors = {
-//       username: "",
+//       name: "",
 //       email: "",
 //       password: "",
 //     };
 
-//     if (username !== fixedUsername) {
+//     if (name !== fixedname) {
 //       valid = false;
-//       newErrors.username = "Invalid username";
+//       newErrors.name = "Invalid name";
 //     }
 
 //     if (email !== fixedEmail) {
@@ -313,14 +317,14 @@ export default Login;
 //     if (valid) {
 //       toast.success("Login successfully!");
 //       setFormData({
-//         username: "",
+//         name: "",
 //         email: "",
 //         password: "",
 //       });
 //       // Redirect to dasLayout page
 //       window.location.href = "/dasLayout";
 //     } else {
-//       toast.error("Invalid username, email, or password");
+//       toast.error("Invalid name, email, or password");
 //     }
 //   };
 
@@ -336,18 +340,18 @@ export default Login;
 //         <p className="pb-4 text-gray-500">Sign in to access your account</p>
 //         <div className="grid grid-cols-1 gap-6">
 //           <div>
-//             <label htmlFor="username">Username</label>
+//             <label htmlFor="name">name</label>
 //             <input
 //               type="text"
-//               id="username"
-//               name="username"
-//               value={formData.username}
+//               id="name"
+//               name="name"
+//               value={formData.name}
 //               onChange={handleChange}
-//               placeholder="Username"
-//               className={`mt-2 h-12 w-full rounded-md bg-gray-100 px-3 outline-primary ${errors.username && 'border border-red-500'}`}
+//               placeholder="name"
+//               className={`mt-2 h-12 w-full rounded-md bg-gray-100 px-3 outline-primary ${errors.name && 'border border-red-500'}`}
 //               required
 //             />
-//             {errors.username && <p className="text-red-500 text-sm">{errors.username}</p>}
+//             {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
 //           </div>
 //           <div>
 //             <label htmlFor="email">Email Address</label>
