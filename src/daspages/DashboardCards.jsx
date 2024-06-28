@@ -53,8 +53,8 @@ const data = [
 
 const DashboardCards = () => {
   return (
-    <div className="flex justify-center items-center">
-      <div className="m-10 grid gap-16 sm:grid-cols-3 md:w-10/12 w-full">
+    <div className="flex  justify-center items-center">
+      <div className=" grid gap-16 sm:grid-cols-3  w-full">
         {data.map((item, index) => (
           <div
             key={index}

@@ -1,10 +1,16 @@
 import React from "react";
-import DasHome from "../daspages/DasHome";
+import Sidebar from "../dascomponents/Sidebar";
+import DashboardCards from "../daspages/DashboardCards";
 
 export default function DasLayout() {
   return (
-    <div>
-      <DasHome />
+    <div className=" flex px-1">
+      <div>
+        <Sidebar />
+      </div>
+      <div className=" w-full  px-10 py-10">
+        <DashboardCards />
+      </div>
     </div>
   );
 }
