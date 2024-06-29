@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Routes, useLocation, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer.jsx";
@@ -16,7 +16,7 @@ import DashboardLayout from "./components/dashboard/DashboardLayout.jsx";
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     AOS.init({
       offset: 100,
       duration: 700,
