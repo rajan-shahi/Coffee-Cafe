@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Sidebar from "./Sidebar";
 import DashboardCards from "../../pages/dashboard/DashboardCards";
 import Message from "../../pages/dashboard/Message";
+import Order from "../../pages/dashboard/Order";
 
 const DashboardLayout = () => {
   const [currentView, setCurrentView] = useState("dashboard");
@@ -12,6 +13,8 @@ const DashboardLayout = () => {
         return <DashboardCards />;
       case "messages":
         return <Message />;
+        case "order":
+        return <Order />;
       default:
         return <DashboardCards />;
     }

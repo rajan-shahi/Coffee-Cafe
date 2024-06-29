@@ -91,7 +91,7 @@ const Sidebar = ({ setCurrentView }) => {
               />
             </svg>
           ),
-          view: "#",
+          view: "order",
         },
         {
           title: "Suppliers",
@@ -188,51 +188,48 @@ const Sidebar = ({ setCurrentView }) => {
     },
   ];
 
-
   return (
-  
-      <div className="h-screen w-64">
-        <div className="flex h-full flex-grow flex-col overflow-y-auto rounded-br-lg rounded-tr-lg bg-white pt-5 shadow-md">
-          <div className="flex mt-5 items-center px-4">
-            <img
-              className="h-12 w-auto max-w-full align-middle"
-              src={HeroPng}
-              alt=""
-            />
-            <div className="flex ml-3 flex-col">
-              <h3 className="font-medium text-xs">Software Developer</h3>
-              <p className="text-xs text-gray-600 mt-1">Er. Rajan Shahi</p>
-            </div>
+    <div className="h-screen w-64">
+      <div className="flex h-full flex-grow flex-col overflow-y-auto rounded-br-lg rounded-tr-lg bg-white pt-5 shadow-md">
+        <div className="flex mt-5 items-center px-4">
+          <img
+            className="h-12 w-auto max-w-full align-middle"
+            src={HeroPng}
+            alt=""
+          />
+          <div className="flex ml-3 flex-col">
+            <h3 className="font-medium text-xs">Software Developer</h3>
+            <p className="text-xs text-gray-600 mt-1">Er. Rajan Shahi</p>
           </div>
-
-          {sections.map((section, index) => (
-            <div key={index}>
-              <span className="ml-3 mt-10 mb-2 block text-xs font-semibold text-gray-500">
-                {section.title}
-              </span>
-              <nav className="flex-1">
-                {section.items &&
-                  section.items.map((item, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setCurrentView(item.view)}
-                      className="flex w-full cursor-pointer items-center border-l-2 border-transparent py-2 px-4 text-sm font-medium text-gray-600 outline-none transition-all duration-100 ease-in-out hover:border-l-2 hover:border-rose-600 hover:text-rose-600 focus:border-l-2"
-                    >
-                      {item.icon}
-                      <span className="ml-4">{item.title}</span>
-                      {item.badge && (
-                        <span className="ml-auto rounded-full bg-rose-600 px-2 text-xs text-white">
-                          {item.badge}
-                        </span>
-                      )}
-                    </button>
-                  ))}
-              </nav>
-            </div>
-          ))}
         </div>
+
+        {sections.map((section, index) => (
+          <div key={index}>
+            <span className="ml-3 mt-10 mb-2 block text-xs font-semibold text-gray-500">
+              {section.title}
+            </span>
+            <nav className="flex-1">
+              {section.items &&
+                section.items.map((item, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentView(item.view)}
+                    className="flex w-full cursor-pointer items-center border-l-2 border-transparent py-2 px-4 text-sm font-medium text-gray-600 outline-none transition-all duration-100 ease-in-out hover:border-l-2 hover:border-rose-600 hover:text-rose-600 focus:border-l-2"
+                  >
+                    {item.icon}
+                    <span className="ml-4">{item.title}</span>
+                    {item.badge && (
+                      <span className="ml-auto rounded-full bg-rose-600 px-2 text-xs text-white">
+                        {item.badge}
+                      </span>
+                    )}
+                  </button>
+                ))}
+            </nav>
+          </div>
+        ))}
       </div>
-   
+    </div>
   );
 };
 
