@@ -28,8 +28,16 @@ const data = [
   {
     bgColor: "bg-primary",
     iconColor: "text-white",
-    title: "Total Inquiries",
-    total: "Total number of inquiries",
+    title: "Total Suppliers",
+    total: "Total number of suppliers",
+    amount: "670",
+    trendIcon: <VscSend size={20} />,
+  },
+  {
+    bgColor: "bg-primary",
+    iconColor: "text-white",
+    title: "Total Messages",
+    total: "Total number of Messages",
 
     amount: "150",
     trendIcon: <TbMessage size={20} />,
@@ -49,14 +57,6 @@ const data = [
     total: "Total number of revenue",
     amount: "$23.4k",
     trendIcon: <GiPlayerPrevious size={20} />,
-  },
-  {
-    bgColor: "bg-primary",
-    iconColor: "text-white",
-    title: "Total Suppliers",
-    total: "Total number of suppliers",
-    amount: "670",
-    trendIcon: <VscSend size={20} />,
   },
 ];
 

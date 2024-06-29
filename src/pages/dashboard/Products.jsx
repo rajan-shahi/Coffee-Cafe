@@ -87,9 +87,8 @@ const Products = () => {
       <div className="flex items-start justify-between md:flex">
         <div className="max-w-lg">
           <h3 className="text-gray-800 text-xl">Total Products</h3>
-          <p className="text-gray-600 text-sm mt-2">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry.
+          <p className="text-gray-600 text-sm mt-1">
+          Total number of products
           </p>
         </div>
         <div className="mt-3 md:mt-0">
@@ -103,7 +102,7 @@ const Products = () => {
       </div>
       <div className="mt-12 shadow-sm border rounded-lg overflow-x-auto">
         <table className="w-full table-auto text-sm text-left">
-          <thead className="text-gray-600 font-medium border-b">
+          <thead className="text-gray-600  text-sm border-b">
             <tr>
               <th className="py-3 px-6 flex items-center gap-x-4">
                 <div>
@@ -179,7 +178,7 @@ const Products = () => {
 
       {/* Overlay for Add Product form */}
       {showAddProduct && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 md:px-0 px-4">
           <div className="bg-white p-6 w-full max-w-md mx-auto rounded-lg shadow-lg">
             <h2 className="text-xl font-bold mb-4">Add Product</h2>
             <form onSubmit={handleAddProduct} className="space-y-4">
