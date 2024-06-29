@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import c1 from "../../assets/coffee2.png"; // Example image import
 
 const Products = () => {
   const tableItems = [
@@ -6,37 +7,37 @@ const Products = () => {
       name: "Liam James",
       email: "liamjames@example.com",
       position: "Software engineer",
-      salary: "$100K",
+      image: c1, // Example image usage
     },
     {
       name: "Olivia Emma",
       email: "oliviaemma@example.com",
       position: "Product designer",
-      salary: "$90K",
+      image: c1,
     },
     {
       name: "William Benjamin",
       email: "william.benjamin@example.com",
       position: "Front-end developer",
-      salary: "$80K",
+      image: c1,
     },
     {
       name: "Henry Theodore",
       email: "henrytheodore@example.com",
       position: "Laravel engineer",
-      salary: "$120K",
+      image: c1,
     },
     {
       name: "Amelia Elijah",
       email: "amelia.elijah@example.com",
       position: "Open source manager",
-      salary: "$75K",
+      image: c1,
     },
   ];
 
   const [areAllChecked, setAllChecked] = useState(false);
   const [checkboxItems, setCheckboxItems] = useState({});
-  const [showAddProduct, setShowAddProduct] = useState(false); // State to control the visibility of add product form
+  const [showAddProduct, setShowAddProduct] = useState(false);
 
   // Initialize checkboxItems state on mount
   useEffect(() => {
@@ -80,11 +81,18 @@ const Products = () => {
     setShowAddProduct(!showAddProduct);
   };
 
+  // Placeholder function for handling form submission
+  const handleAddProduct = (e) => {
+    e.preventDefault();
+    // Implement logic to handle adding a product here
+    toggleAddProduct(); // Example: Close form after submission
+  };
+
   return (
-    <div className="max-w-screen-xl mx-auto px-4 md:px-8">
-      <div className="items-start justify-between md:flex">
+    <div className="max-w-screen-xl mx-auto ">
+      <div className="flex items-start justify-between md:flex">
         <div className="max-w-lg">
-          <h3 className="text-gray-800 text-xl">Total Product</h3>
+          <h3 className="text-gray-800 text-xl">Total Products</h3>
           <p className="text-gray-600 text-sm mt-2">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry.
@@ -93,7 +101,7 @@ const Products = () => {
         <div className="mt-3 md:mt-0">
           <button
             onClick={toggleAddProduct}
-            className="inline- px-4 py-2 text-white duration-150 font-medium  bg-primary rounded-lg  hover:bg-primary/95 md:text-sm"
+            className="inline-block px-4 py-2 text-white duration-150 font-medium bg-primary rounded-lg hover:bg-primary/95 md:text-sm"
           >
             Add Product
           </button>
@@ -117,11 +125,12 @@ const Products = () => {
                     className="relative flex w-5 h-5 bg-white peer-checked:bg-indigo-600 rounded-md border ring-offset-2 ring-indigo-600 duration-150 peer-active:ring cursor-pointer after:absolute after:inset-x-0 after:top-[3px] after:m-auto after:w-1.5 after:h-2.5 after:border-r-2 after:border-b-2 after:border-white after:rotate-45"
                   ></label>
                 </div>
-                Username
+                Product Name
               </th>
-              <th className="py-3 px-6">Email</th>
-              <th className="py-3 px-6">Position</th>
-              <th className="py-3 px-6">Salary</th>
+              <th className="py-3 px-6">Product Image</th>
+              <th className="py-3 px-6">Product Type</th>
+              <th className="py-3 px-6">Product Price</th>
+
               <th className="py-3 px-6"></th>
             </tr>
           </thead>
@@ -147,9 +156,16 @@ const Products = () => {
                   </div>
                   {item.name}
                 </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="h-12 w-12 object-cover rounded-full"
+                  />
+                </td>
                 <td className="px-6 py-4 whitespace-nowrap">{item.email}</td>
                 <td className="px-6 py-4 whitespace-nowrap">{item.position}</td>
-                <td className="px-6 py-4 whitespace-nowrap">{item.salary}</td>
+
                 <td className="text-right px-6 whitespace-nowrap">
                   <a
                     href="#"
@@ -172,12 +188,9 @@ const Products = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white p-6 w-full max-w-md mx-auto rounded-lg shadow-lg">
             <h2 className="text-xl font-bold mb-4">Add Product</h2>
-            <form className="space-y-4">
+            <form onSubmit={handleAddProduct} className="space-y-4">
               <div>
-                <label
-                  htmlFor="productName"
-                  className=" text-sm  text-gray-700"
-                >
+                <label htmlFor="productName" className="text-sm text-gray-700">
                   Product Name
                 </label>
                 <input
@@ -185,47 +198,44 @@ const Products = () => {
                   id="productName"
                   name="productName"
                   placeholder="Enter Product name"
-                  className="mt-2  border  outline-none p-2  bg-gray-50 w-full border-gray-300 rounded-md   sm:text-sm"
+                  className="mt-2 border outline-none p-2 bg-gray-50 w-full border-gray-300 rounded-md sm:text-sm"
                 />
               </div>
               <div>
-                <label htmlFor="productType" className=" text-sm text-gray-700">
+                <label htmlFor="productType" className="text-sm text-gray-700">
                   Product Type
                 </label>
                 <input
                   type="text"
                   id="productType"
-                  placeholder="Enter product type"
                   name="productType"
-                  className="mt-2  border  outline-none p-2  bg-gray-50 w-full border-gray-300 rounded-md   sm:text-sm"
+                  placeholder="Enter product type"
+                  className="mt-2 border outline-none p-2 bg-gray-50 w-full border-gray-300 rounded-md sm:text-sm"
                 />
               </div>
               <div>
-                <label
-                  htmlFor="productPrice"
-                  className=" text-sm  text-gray-700"
-                >
+                <label htmlFor="productPrice" className="text-sm text-gray-700">
                   Product Price
                 </label>
                 <input
                   type="number"
                   id="productPrice"
-                  name="number"
+                  name="productPrice"
                   placeholder="Enter Product price"
-                  className="mt-2  border  outline-none p-2  bg-gray-50 w-full border-gray-300 rounded-md   sm:text-sm"
+                  className="mt-2 border outline-none p-2 bg-gray-50 w-full border-gray-300 rounded-md sm:text-sm"
                 />
               </div>
               <div className="flex justify-end">
                 <button
                   type="submit"
-                  className=" text-sm px-4 py-2 text-white font-medium bg-primary rounded-lg  hover:bg-primary/95 duration-300"
+                  className="text-sm px-4 py-2 text-white font-medium bg-primary rounded-lg hover:bg-primary/95 duration-300"
                 >
                   Save
                 </button>
                 <button
                   type="button"
                   onClick={toggleAddProduct}
-                  className="inline- ml-4 text-sm px-4 py-2 text-gray-600 font-medium bg-gray-200 rounded-lg hover:bg-gray-300 duration-300"
+                  className="inline-block ml-4 text-sm px-4 py-2 text-gray-600 font-medium bg-gray-200 rounded-lg hover:bg-gray-300 duration-300"
                 >
                   Cancel
                 </button>
