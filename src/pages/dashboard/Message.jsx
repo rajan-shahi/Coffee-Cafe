@@ -50,21 +50,11 @@ const Message = () => {
     <div className="max-w-screen-xl mx-auto">
       <div className="items-start justify-between md:flex">
         <div className="max-w-lg">
-          <h3 className="text-gray-800 text-xl font-bold sm:text-2xl">
-            Team members
-          </h3>
-          <p className="text-gray-600 mt-2">
+          <h3 className="text-gray-800 font-semibold ">Total Messages</h3>
+          <p className="text-gray-600 text-sm mt-2">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry.
           </p>
-        </div>
-        <div className="mt-3 md:mt-0">
-          <a
-            href="javascript:void(0)"
-            className="inline-block px-4 py-2 text-white  rounded-md font-medium bg-primary duration-300 hover:bg-primary/70 active:bg-primary md:text-sm"
-          >
-            Add member
-          </a>
         </div>
       </div>
       <div className="mt-12 shadow-sm border rounded-lg overflow-x-auto">

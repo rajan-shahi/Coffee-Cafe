@@ -44,7 +44,7 @@ const Order = () => {
     <div>
       <div className="sm:flex sm:items-center sm:justify-between flex-col sm:flex-row">
         <p className="flex-1 text-base font-bold text-gray-900">
-          Latest Payments
+          Total Orders
         </p>
 
         <div className="mt-4 sm:mt-0">
@@ -92,20 +92,20 @@ const Order = () => {
       <div className="mt-6 overflow-hidden rounded-xl border shadow">
         <table className="min-w-full border-separate border-spacing-y-2 border-spacing-x-2">
           <thead className="hidden border-b lg:table-header-group">
-            <tr>
+            <tr className=" text-left ">
               <th
                 width="50%"
-                className="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-6"
+                className="whitespace-normal py-4   font-semibold text-gray-700 sm:px-6"
               >
                 Invoice
               </th>
-              <th className="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-6">
+              <th className="whitespace-normal py-4 font-semibold text-gray-700 sm:px-6">
                 Date
               </th>
-              <th className="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-6">
+              <th className="whitespace-normal py-4 font-semibold text-gray-700 sm:px-6">
                 Amount
               </th>
-              <th className="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-6">
+              <th className="whitespace-normal py-4 font-semibold text-gray-700 sm:px-6">
                 Status
               </th>
             </tr>
@@ -116,7 +116,7 @@ const Order = () => {
               <tr key={order.id}>
                 <td
                   width="50%"
-                  className="whitespace-no-wrap py-4 text-sm font-bold text-gray-900 sm:px-6"
+                  className="whitespace-no-wrap py-4 text-sm  text-gray-500 font-normal sm:px-6"
                 >
                   {order.invoice}
                   <div className="mt-1 lg:hidden">
