@@ -2,26 +2,30 @@ import React, { useState, useEffect } from "react";
 import c1 from "../../assets/coffee2.png"; // Example image import
 
 const Products = () => {
-  const tableItems = [
+  const initialTableItems = [
     {
+      id: 1,
       name: "Premium Coffee",
       type: "Coffee",
       price: "Rs 300",
-      image: c1, // Example image usage
+      image: c1,
     },
     {
+      id: 2,
       name: "Hot Coffee",
       type: "Coffee",
       price: "Rs 150",
       image: c1,
     },
     {
+      id: 3,
       name: "Milk Coffee",
       type: "Coffee",
       price: "Rs 120",
       image: c1,
     },
     {
+      id: 4,
       name: "Cold Coffee",
       type: "Coffee",
       price: "Rs 190",
@@ -29,14 +33,20 @@ const Products = () => {
     },
   ];
 
+  const [products, setProducts] = useState(initialTableItems);
   const [areAllChecked, setAllChecked] = useState(false);
   const [checkboxItems, setCheckboxItems] = useState({});
   const [showAddProduct, setShowAddProduct] = useState(false);
+  const [productName, setProductName] = useState("");
+  const [productType, setProductType] = useState("");
+  const [productPrice, setProductPrice] = useState("");
+  const [productImage, setProductImage] = useState(null); // State for selected image file
+  const [imagePreview, setImagePreview] = useState(null); // State for image preview
 
   // Initialize checkboxItems state on mount
   useEffect(() => {
     const initialCheckboxes = {};
-    tableItems.forEach((item, idx) => {
+    initialTableItems.forEach((item, idx) => {
       initialCheckboxes[`checkbox${idx}`] = false;
     });
     setCheckboxItems(initialCheckboxes);
@@ -46,7 +56,7 @@ const Products = () => {
   const handleCheckboxItems = () => {
     const updatedCheckboxes = {};
     const newAllChecked = !areAllChecked;
-    tableItems.forEach((item, idx) => {
+    initialTableItems.forEach((item, idx) => {
       updatedCheckboxes[`checkbox${idx}`] = newAllChecked;
     });
     setCheckboxItems(updatedCheckboxes);
@@ -63,33 +73,76 @@ const Products = () => {
     setAllChecked(false); // Uncheck "Select All" if any checkbox changes
   };
 
-  // Check if all checkboxes are checked
-  useEffect(() => {
-    const checkboxItemsVal = Object.values(checkboxItems);
-    const allChecked = checkboxItemsVal.every((item) => item);
-    setAllChecked(allChecked);
-  }, [checkboxItems]);
-
   // Function to toggle visibility of add product form
   const toggleAddProduct = () => {
     setShowAddProduct(!showAddProduct);
+    // Reset form fields and image preview on toggle
+    setProductName("");
+    setProductType("");
+    setProductPrice("");
+    setProductImage(null);
+    setImagePreview(null);
   };
 
-  // Placeholder function for handling form submission
+  // Handle form submission for adding a product
   const handleAddProduct = (e) => {
     e.preventDefault();
-    // Implement logic to handle adding a product here
-    toggleAddProduct(); // Example: Close form after submission
+
+    // Validate form fields
+    if (!productName || !productType || !productPrice || !productImage) {
+      alert("Please fill all fields and select an image.");
+      return;
+    }
+
+    // Create new product object
+    const newProduct = {
+      id: products.length + 1,
+      name: productName,
+      type: productType,
+      price: `Rs ${productPrice}`,
+      image: imagePreview || c1, // Use image preview or default image
+    };
+
+    // Update products state with new product
+    setProducts([...products, newProduct]);
+
+    toggleAddProduct(); // Close form after submission
+  };
+
+  // Handle image selection and preview
+  const handleImageChange = (e) => {
+    const selectedImage = e.target.files[0];
+    if (!selectedImage) {
+      return;
+    }
+
+    setProductImage(selectedImage);
+
+    // Display image preview
+    const reader = new FileReader();
+    reader.onload = () => {
+      setImagePreview(reader.result);
+    };
+    reader.readAsDataURL(selectedImage);
+  };
+
+  // Function to delete a product by ID
+  const handleDeleteProduct = (productId) => {
+    const updatedProducts = products.filter(
+      (product) => product.id !== productId
+    );
+    setProducts(updatedProducts);
+    // Optionally, update checkboxItems state and areAllChecked state if necessary
   };
 
   return (
-    <div className="max-w-screen-xl mx-auto ">
+    <div className="max-w-screen-xl mx-auto">
       <div className="flex items-start justify-between md:flex">
         <div className="max-w-lg">
-          <h3 className="text-gray-800 text-xl">Total Products</h3>
-          <p className="text-gray-600 text-sm mt-1">
-          Total number of products
-          </p>
+          <h3 className="text-gray-800 text-xl">
+            Total Products: {products.length}
+          </h3>
+          <p className="text-gray-600 text-sm mt-1">Total number of products</p>
         </div>
         <div className="mt-3 md:mt-0">
           <button
@@ -102,7 +155,7 @@ const Products = () => {
       </div>
       <div className="mt-12 shadow-sm border rounded-lg overflow-x-auto">
         <table className="w-full table-auto text-sm text-left">
-          <thead className="text-gray-600  text-sm border-b">
+          <thead className="text-gray-600 text-sm border-b">
             <tr>
               <th className="py-3 px-6 flex items-center gap-x-4">
                 <div>
@@ -123,27 +176,26 @@ const Products = () => {
               <th className="py-3 px-6">Product Image</th>
               <th className="py-3 px-6">Product Type</th>
               <th className="py-3 px-6">Product Price</th>
-
               <th className="py-3 px-6"></th>
             </tr>
           </thead>
           <tbody className="text-gray-600 divide-y">
-            {tableItems.map((item, idx) => (
+            {products.map((item, idx) => (
               <tr
-                key={idx}
+                key={item.id}
                 className={idx % 2 === 0 ? "bg-gray-50" : "bg-white"}
               >
                 <td className="px-6 py-4 whitespace-nowrap flex items-center gap-x-4">
                   <div>
                     <input
                       type="checkbox"
-                      id={`checkbox-${idx}`}
+                      id={`checkbox-${item.id}`}
                       className="peer hidden"
                       checked={checkboxItems[`checkbox${idx}`]}
                       onChange={(e) => handleCheckboxChange(e, idx)}
                     />
                     <label
-                      htmlFor={`checkbox-${idx}`}
+                      htmlFor={`checkbox-${item.id}`}
                       className="relative flex w-5 h-5 bg-white peer-checked:bg-indigo-600 rounded-md border ring-offset-2 ring-indigo-600 duration-150 peer-active:ring cursor-pointer after:absolute after:inset-x-0 after:top-[3px] after:m-auto after:w-1.5 after:h-2.5 after:border-r-2 after:border-b-2 after:border-white after:rotate-45"
                     ></label>
                   </div>
@@ -158,7 +210,6 @@ const Products = () => {
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">{item.type}</td>
                 <td className="px-6 py-4 whitespace-nowrap">{item.price}</td>
-
                 <td className="text-right px-6 whitespace-nowrap">
                   <a
                     href="#"
@@ -166,7 +217,10 @@ const Products = () => {
                   >
                     Edit
                   </a>
-                  <button className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg">
+                  <button
+                    onClick={() => handleDeleteProduct(item.id)}
+                    className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg"
+                  >
                     Delete
                   </button>
                 </td>
@@ -190,8 +244,11 @@ const Products = () => {
                   type="text"
                   id="productName"
                   name="productName"
+                  value={productName}
+                  onChange={(e) => setProductName(e.target.value)}
                   placeholder="Enter Product name"
                   className="mt-2 border outline-none p-2 bg-gray-50 w-full border-gray-300 rounded-md sm:text-sm"
+                  required
                 />
               </div>
               <div>
@@ -202,8 +259,11 @@ const Products = () => {
                   type="text"
                   id="productType"
                   name="productType"
+                  value={productType}
+                  onChange={(e) => setProductType(e.target.value)}
                   placeholder="Enter product type"
                   className="mt-2 border outline-none p-2 bg-gray-50 w-full border-gray-300 rounded-md sm:text-sm"
+                  required
                 />
               </div>
               <div>
@@ -214,20 +274,35 @@ const Products = () => {
                   type="number"
                   id="productPrice"
                   name="productPrice"
+                  value={productPrice}
+                  onChange={(e) => setProductPrice(e.target.value)}
                   placeholder="Enter Product price"
                   className="mt-2 border outline-none p-2 bg-gray-50 w-full border-gray-300 rounded-md sm:text-sm"
+                  required
                 />
               </div>
               <div>
-                <label htmlFor="productPrice" className="text-sm text-gray-700">
+                <label htmlFor="productImage" className="text-sm text-gray-700">
                   Product Image
                 </label>
                 <input
                   type="file"
-                  id="productPrice"
-                  name="productPrice"
-                  className="mt-2  p-2 w-full text-sm"
+                  id="productImage"
+                  name="productImage"
+                  onChange={handleImageChange}
+                  className="mt-2 p-2 w-full text-sm"
+                  accept="image/*"
+                  required
                 />
+                {imagePreview && (
+                  <div className="mt-2">
+                    <img
+                      src={imagePreview}
+                      alt="Product Preview"
+                      className="h-20 w-20 object-cover rounded-md"
+                    />
+                  </div>
+                )}
               </div>
               <div className="flex justify-end">
                 <button
