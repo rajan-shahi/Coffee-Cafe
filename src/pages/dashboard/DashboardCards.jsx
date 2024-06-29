@@ -39,7 +39,7 @@ const data = [
     iconColor: "text-white",
     title: "Total Refunds",
     total: "Total number of refunds",
-    amount: "0",
+    amount: "10",
     trendIcon: <TfiMoney size={20} />,
   },
   {
