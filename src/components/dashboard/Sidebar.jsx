@@ -198,7 +198,7 @@ const Sidebar = ({ setCurrentView }) => {
             alt=""
           />
           <div className="flex ml-3 flex-col">
-            <h3 className="font-medium text-xs">Software Developer</h3>
+            <h3 className="font-medium ">Software Developer</h3>
             <p className="text-xs text-gray-600 mt-1">Er. Rajan Shahi</p>
           </div>
         </div>
