@@ -28,6 +28,14 @@ const DashboardLayout = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  const handleNavigation = (view) => {
+    setCurrentView(view);
+    if (window.innerWidth < 768) {
+      // Only close sidebar on mobile devices
+      setIsSidebarOpen(false);
+    }
+  };
+
   return (
     <div className="relative flex h-screen">
       {/* Top bar for mobile */}
@@ -68,7 +76,7 @@ const DashboardLayout = () => {
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <Sidebar setCurrentView={setCurrentView} />
+        <Sidebar setCurrentView={handleNavigation} />
       </div>
 
       {/* Main content */}
