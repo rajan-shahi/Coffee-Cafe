@@ -133,7 +133,7 @@ const DashboardLayout = () => {
       </div>
 
       {/* Main content */}
-      <div className="flex-grow w-full md:px-14  px-5 pt-20">
+      <div className="flex-grow w-full md:px-14  px-5 py-20">
         {renderView()}
       </div>
     </div>
