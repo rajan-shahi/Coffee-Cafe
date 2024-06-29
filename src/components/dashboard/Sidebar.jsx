@@ -1,8 +1,7 @@
 import React from "react";
-import HeroPng from "../assets/coffee2.png";
+import HeroPng from "../../assets/coffee2.png";
 
-const Sidebar = () => {
-  // Sample data for dynamic rendering
+const Sidebar = ({ setCurrentView }) => {
   const sections = [
     {
       title: "Dashboard",
@@ -25,7 +24,7 @@ const Sidebar = () => {
               />
             </svg>
           ),
-          link: "#",
+          view: "dashboard",
         },
         {
           title: "Messages",
@@ -45,7 +44,7 @@ const Sidebar = () => {
               />
             </svg>
           ),
-          link: "#",
+          view: "messages",
           badge: "6",
         },
       ],
@@ -72,7 +71,7 @@ const Sidebar = () => {
               />
             </svg>
           ),
-          link: "#",
+          view: "#",
         },
         {
           title: "Orders",
@@ -92,7 +91,7 @@ const Sidebar = () => {
               />
             </svg>
           ),
-          link: "#",
+          view: "#",
         },
         {
           title: "Suppliers",
@@ -112,7 +111,7 @@ const Sidebar = () => {
               />
             </svg>
           ),
-          link: "#",
+          view: "#",
         },
       ],
     },
@@ -138,7 +137,7 @@ const Sidebar = () => {
               />
             </svg>
           ),
-          link: "#",
+          view: "#",
         },
         {
           title: "Refunds",
@@ -158,7 +157,7 @@ const Sidebar = () => {
               />
             </svg>
           ),
-          link: "#",
+          view: "#",
         },
       ],
     },
@@ -183,15 +182,16 @@ const Sidebar = () => {
               />
             </svg>
           ),
-          link: "#",
+          view: "#",
         },
       ],
     },
   ];
 
+
   return (
-    <div className="w-screen bg-gray-100">
-      <div className="h-screen w-64 ">
+  
+      <div className="h-screen w-64">
         <div className="flex h-full flex-grow flex-col overflow-y-auto rounded-br-lg rounded-tr-lg bg-white pt-5 shadow-md">
           <div className="flex mt-5 items-center px-4">
             <img
@@ -200,8 +200,8 @@ const Sidebar = () => {
               alt=""
             />
             <div className="flex ml-3 flex-col">
-              <h3 className="font-medium">Software Developer</h3>
-              <p className="text-xs text-gray-500">Er. Rajan Shahi</p>
+              <h3 className="font-medium text-xs">Software Developer</h3>
+              <p className="text-xs text-gray-600 mt-1">Er. Rajan Shahi</p>
             </div>
           </div>
 
@@ -213,26 +213,26 @@ const Sidebar = () => {
               <nav className="flex-1">
                 {section.items &&
                   section.items.map((item, idx) => (
-                    <a
+                    <button
                       key={idx}
-                      href={item.link}
-                      className="flex cursor-pointer items-center border-l-2 border-transparent py-2 px-4 text-sm font-medium text-gray-600 outline-none transition-all duration-100 ease-in-out hover:border-l-2 hover:border-rose-600 hover:text-rose-600 focus:border-l-2"
+                      onClick={() => setCurrentView(item.view)}
+                      className="flex w-full cursor-pointer items-center border-l-2 border-transparent py-2 px-4 text-sm font-medium text-gray-600 outline-none transition-all duration-100 ease-in-out hover:border-l-2 hover:border-rose-600 hover:text-rose-600 focus:border-l-2"
                     >
-                      {item.icon} {/* Render SVG directly */}
+                      {item.icon}
                       <span className="ml-4">{item.title}</span>
                       {item.badge && (
                         <span className="ml-auto rounded-full bg-rose-600 px-2 text-xs text-white">
                           {item.badge}
                         </span>
                       )}
-                    </a>
+                    </button>
                   ))}
               </nav>
             </div>
           ))}
         </div>
       </div>
-    </div>
+   
   );
 };
 
