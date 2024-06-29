@@ -11,6 +11,8 @@ const data = [
     bgColor: "bg-primary",
     iconColor: "text-white",
     title: "Total Products",
+    total: "Total number of products",
+
     amount: "1200",
     trendIcon: <MdShoppingCart size={25} />,
   },
@@ -18,6 +20,8 @@ const data = [
     bgColor: "bg-primary",
     iconColor: "text-white",
     title: "Total Orders",
+    total: "Total number of orders",
+
     amount: "500",
     trendIcon: <FaTruck size={25} />,
   },
@@ -25,6 +29,8 @@ const data = [
     bgColor: "bg-primary",
     iconColor: "text-white",
     title: "Total Inquiries",
+    total: "Total number of inquiries",
+
     amount: "150",
     trendIcon: <TbMessage size={25} />,
   },
@@ -32,6 +38,7 @@ const data = [
     bgColor: "bg-primary",
     iconColor: "text-white",
     title: "Total Refunds",
+    total: "Total number of refunds",
     amount: "0",
     trendIcon: <TfiMoney size={25} />,
   },
@@ -39,6 +46,7 @@ const data = [
     bgColor: "bg-primary",
     iconColor: "text-white",
     title: "Total Revenue",
+    total: "Total number of revenue",
     amount: "$23.4k",
     trendIcon: <GiPlayerPrevious size={25} />,
   },
@@ -46,6 +54,7 @@ const data = [
     bgColor: "bg-primary",
     iconColor: "text-white",
     title: "Total Suppliers",
+    total: "Total number of suppliers",
     amount: "670",
     trendIcon: <VscSend size={25} />,
   },
@@ -58,15 +67,14 @@ const DashboardCards = () => {
         {data.map((item, index) => (
           <div
             key={index}
-            className="flex justify-center items-center flex-col py-6 shadow-lg hover:shadow-xl duration-500 rounded-md shadow-primary/20"
+            className="flex  justify-between  px-6  py-6 shadow-md hover:shadow-xl duration-500 rounded-md shadow-primary/20"
           >
-            <div
-              className={`h-max w-max rounded-xl ${item.bgColor} p-3 ${item.iconColor}`}
-            >
-              {item.trendIcon}
+            <div>
+              <p className=" font-medium">{item.title}</p>
+              <p className="mt-2 text-xl font-medium">{item.amount}</p>
+              <p className=" text-xs  text-gray-500 mt-2">{item.total}</p>
             </div>
-            <p className="mt-4 font-medium">{item.title}</p>
-            <p className="mt-2 text-xl font-medium">{item.amount}</p>
+            <div>{item.trendIcon}</div>
           </div>
         ))}
       </div>
