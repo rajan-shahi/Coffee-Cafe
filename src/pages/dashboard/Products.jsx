@@ -44,7 +44,6 @@ const Products = () => {
   const [imagePreview, setImagePreview] = useState(null); // State for image preview
   const [isEditing, setIsEditing] = useState(false); // State for edit mode
   const [selectedProduct, setSelectedProduct] = useState(null); // State for selected product to edit
-  const [successMessage, setSuccessMessage] = useState(""); // State for success message
 
   // Initialize checkboxItems state on mount
   useEffect(() => {
@@ -133,7 +132,6 @@ const Products = () => {
           : product
       );
       setProducts(updatedProducts);
-      setSuccessMessage("Product updated successfully.");
     } else {
       // Create new product object
       const newProduct = {
@@ -146,18 +144,9 @@ const Products = () => {
 
       // Update products state with new product
       setProducts([...products, newProduct]);
-      setSuccessMessage("Product added successfully.");
     }
 
-    // Clear form fields after submission
-    setProductName("");
-    setProductType("");
-    setProductPrice("");
-    setProductImage(null);
-    setImagePreview(null);
-
-    // Close form after submission
-    toggleAddProduct();
+    toggleAddProduct(); // Close form after submission
   };
 
   // Handle image selection and preview
@@ -177,23 +166,8 @@ const Products = () => {
     reader.readAsDataURL(selectedImage);
   };
 
-  // Clear success message after a delay
-  useEffect(() => {
-    if (successMessage) {
-      const timer = setTimeout(() => {
-        setSuccessMessage("");
-      }, 3000); // Clear message after 3 seconds
-      return () => clearTimeout(timer);
-    }
-  }, [successMessage]);
-
   return (
     <div className="max-w-screen-xl mx-auto">
-      {successMessage && (
-        <div className="bg-green-200 text-green-800 px-4 py-2 mb-4 rounded-md">
-          {successMessage}
-        </div>
-      )}
       <div className="flex items-start justify-between md:flex">
         <div className="max-w-lg">
           <h3 className="text-gray-800 text-xl">
