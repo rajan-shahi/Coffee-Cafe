@@ -45,7 +45,7 @@ const Sidebar = ({ setCurrentView }) => {
             </svg>
           ),
           view: "messages",
-          badge: "6",
+          badge: "5",
         },
       ],
     },
@@ -71,7 +71,7 @@ const Sidebar = ({ setCurrentView }) => {
               />
             </svg>
           ),
-          view: "#",
+          view: "products",
         },
         {
           title: "Orders",

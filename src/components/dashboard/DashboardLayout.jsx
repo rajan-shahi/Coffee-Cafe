@@ -3,6 +3,7 @@ import Sidebar from "./Sidebar";
 import DashboardCards from "../../pages/dashboard/DashboardCards";
 import Message from "../../pages/dashboard/Message";
 import Order from "../../pages/dashboard/Order";
+import Products from "../../pages/dashboard/Products";
 
 const DashboardLayout = () => {
   const [currentView, setCurrentView] = useState("dashboard");
@@ -15,6 +16,8 @@ const DashboardLayout = () => {
         return <Message />;
         case "order":
         return <Order />;
+        case "products":
+            return <Products />;
       default:
         return <DashboardCards />;
     }
