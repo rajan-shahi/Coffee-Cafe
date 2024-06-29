@@ -5,47 +5,55 @@ const Order = () => {
   const orders = [
     {
       id: 1,
-      invoice: "Standard Plan - Feb 2022",
-      date: "07 February, 2022",
-      amount: "$59.00",
+      invoice: "Muna Sapkota",
+      date: "07 February,2024",
+      amount: "10",
       status: "Complete",
+      location: "Kathmandu",
+      order: "Hot Coffee",
     },
     {
       id: 2,
-      invoice: "Standard Plan - Jan 2022",
-      date: "09 January, 2022",
-      amount: "$59.00",
+      invoice: "Jun Parsad Rokaya",
+      date: "09 January,2024",
+      amount: "250",
       status: "Canceled",
+      location: "Pokhara",
+      order: "Cold Coffee",
     },
     {
       id: 3,
-      invoice: "Basic Plan - Dec 2021",
-      date: "15 December, 2021",
-      amount: "$29.00",
+      invoice: "Subeena Gurung",
+      date: "15 December, 2024",
+      amount: "100",
       status: "Complete",
+      location: "Surkhet",
+      order: "Milk Coffee",
     },
     {
       id: 4,
-      invoice: "Basic Plan - Nov 2021",
-      date: "14 November, 2021",
-      amount: "$29.00",
+      invoice: "Loki Chaulagain",
+      date: "14 November, 2024",
+      amount: "30",
       status: "Pending",
+      location: "Nepalgunj",
+      order: "Hot Coffee",
     },
     {
       id: 5,
-      invoice: "Basic Plan - Oct 2021",
-      date: "15 October, 2021",
-      amount: "$29.00",
+      invoice: "Rajan Bahadur Shahi",
+      date: "15 October, 2024",
+      amount: "60",
       status: "Complete",
+      location: "Kathmandu",
+      order: "Premium Coffee",
     },
   ];
 
   return (
     <div>
       <div className="sm:flex sm:items-center sm:justify-between flex-col sm:flex-row">
-        <p className="flex-1 text-base font-bold text-gray-900">
-          Total Orders
-        </p>
+        <p className="flex-1 text-base font-bold text-gray-900">Total Orders</p>
 
         <div className="mt-4 sm:mt-0">
           <div className="flex items-center justify-start sm:justify-end">
@@ -93,19 +101,22 @@ const Order = () => {
         <table className="min-w-full border-separate border-spacing-y-2 border-spacing-x-2">
           <thead className="hidden border-b lg:table-header-group">
             <tr className=" text-left ">
-              <th
-                width="50%"
-                className="whitespace-normal py-4   font-semibold text-gray-700 sm:px-6"
-              >
-                Invoice
+              <th className="whitespace-normal py-3    text-sm text-gray-700 sm:px-6">
+                Full Name
               </th>
-              <th className="whitespace-normal py-4 font-semibold text-gray-700 sm:px-6">
-                Date
+              <th className="whitespace-normal py-3  text-sm text-gray-700 sm:px-6">
+                Order Date
               </th>
-              <th className="whitespace-normal py-4 font-semibold text-gray-700 sm:px-6">
-                Amount
+              <th className="whitespace-normal py-3  text-sm text-gray-700 sm:px-6">
+                Order Location
               </th>
-              <th className="whitespace-normal py-4 font-semibold text-gray-700 sm:px-6">
+              <th className="whitespace-normal py-3  text-sm text-gray-700 sm:px-6">
+                Order Name
+              </th>
+              <th className="whitespace-normal py-3  text-sm text-gray-700 sm:px-6">
+                Order Quantity
+              </th>
+              <th className="whitespace-normal py-3  text-sm text-gray-700 sm:px-6">
                 Status
               </th>
             </tr>
@@ -114,19 +125,22 @@ const Order = () => {
           <tbody className="lg:border-gray-300">
             {orders.map((order) => (
               <tr key={order.id}>
-                <td
-                  width="50%"
-                  className="whitespace-no-wrap py-4 text-sm  text-gray-500 font-normal sm:px-6"
-                >
+                <td className="whitespace-no-wrap py-3 text-sm  text-gray-500 font-normal sm:px-6">
                   {order.invoice}
                   <div className="mt-1 lg:hidden">
                     <p className="font-normal text-gray-500">{order.date}</p>
                   </div>
                 </td>
-                <td className="whitespace-no-wrap hidden py-4 text-sm font-normal text-gray-500 sm:px-6 lg:table-cell">
+                <td className="whitespace-no-wrap hidden py-3 text-sm font-normal text-gray-500 sm:px-6 lg:table-cell">
                   {order.date}
                 </td>
-                <td className="whitespace-no-wrap py-4 px-6 text-right text-sm text-gray-600 lg:text-left">
+                <td className="whitespace-no-wrap hidden py-3 text-sm font-normal text-gray-500 sm:px-6 lg:table-cell">
+                  {order.location}
+                </td>
+                <td className="whitespace-no-wrap hidden py-3 text-sm font-normal text-gray-500 sm:px-6 lg:table-cell">
+                  {order.order}
+                </td>
+                <td className="whitespace-no-wrap py-3 px-6 text-right text-sm text-gray-600 lg:text-left">
                   {order.amount}
                   <div
                     className={`flex mt-1 ml-auto w-fit items-center rounded-full ${
@@ -140,7 +154,7 @@ const Order = () => {
                     {order.status}
                   </div>
                 </td>
-                <td className="whitespace-no-wrap hidden py-4 text-sm font-normal text-gray-500 sm:px-6 lg:table-cell">
+                <td className="whitespace-no-wrap hidden py-3 text-sm font-normal text-gray-500 sm:px-6 lg:table-cell">
                   <div
                     className={`inline-flex items-center rounded-full ${
                       order.status === "Complete"

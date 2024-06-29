@@ -189,7 +189,7 @@ const Sidebar = ({ setCurrentView }) => {
   ];
 
   return (
-    <div className="h-screen w-64">
+    <div className="h-screen w-64 ">
       <div className="flex h-full flex-grow flex-col overflow-y-auto rounded-br-lg rounded-tr-lg bg-white pt-5 shadow-md">
         <div className="flex md:mt-5 items-center px-4">
           <img
