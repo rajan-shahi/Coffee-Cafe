@@ -225,6 +225,18 @@ const Products = () => {
                   className="mt-2 border outline-none p-2 bg-gray-50 w-full border-gray-300 rounded-md sm:text-sm"
                 />
               </div>
+              <div>
+                <label htmlFor="productPrice" className="text-sm text-gray-700">
+                  Product Image
+                </label>
+                <input
+                  type="file"
+                  id="productPrice"
+                  name="productPrice"
+                 
+                  className="mt-2  p-2 w-full text-sm"
+                />
+              </div>
               <div className="flex justify-end">
                 <button
                   type="submit"
