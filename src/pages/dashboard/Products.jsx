@@ -4,33 +4,27 @@ import c1 from "../../assets/coffee2.png"; // Example image import
 const Products = () => {
   const tableItems = [
     {
-      name: "Liam James",
-      email: "liamjames@example.com",
-      position: "Software engineer",
+      name: "Premium Coffee",
+      type: "Coffee",
+      price: "Rs 300",
       image: c1, // Example image usage
     },
     {
-      name: "Olivia Emma",
-      email: "oliviaemma@example.com",
-      position: "Product designer",
+      name: "Hot Coffee",
+      type: "Coffee",
+      price: "Rs 150",
       image: c1,
     },
     {
-      name: "William Benjamin",
-      email: "william.benjamin@example.com",
-      position: "Front-end developer",
+      name: "Milk Coffee",
+      type: "Coffee",
+      price: "Rs 120",
       image: c1,
     },
     {
-      name: "Henry Theodore",
-      email: "henrytheodore@example.com",
-      position: "Laravel engineer",
-      image: c1,
-    },
-    {
-      name: "Amelia Elijah",
-      email: "amelia.elijah@example.com",
-      position: "Open source manager",
+      name: "Cold Coffee",
+      type: "Coffee",
+      price: "Rs 190",
       image: c1,
     },
   ];
@@ -163,8 +157,8 @@ const Products = () => {
                     className="h-12 w-12 object-cover rounded-full"
                   />
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">{item.email}</td>
-                <td className="px-6 py-4 whitespace-nowrap">{item.position}</td>
+                <td className="px-6 py-4 whitespace-nowrap">{item.type}</td>
+                <td className="px-6 py-4 whitespace-nowrap">{item.price}</td>
 
                 <td className="text-right px-6 whitespace-nowrap">
                   <a
@@ -233,7 +227,6 @@ const Products = () => {
                   type="file"
                   id="productPrice"
                   name="productPrice"
-                 
                   className="mt-2  p-2 w-full text-sm"
                 />
               </div>
