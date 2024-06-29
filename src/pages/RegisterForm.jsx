@@ -102,6 +102,7 @@ export default function RegisterForm() {
                   type="text"
                   autoComplete="username"
                   required
+                  placeholder="Enter your user name"
                   value={formData.name}
                   onChange={handleChange}
                   className="appearance-none bg-gray-100 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 outline-primary/70 sm:text-sm"
@@ -122,6 +123,7 @@ export default function RegisterForm() {
                   type="tel"
                   autoComplete="tel"
                   required
+                  placeholder="Enter your number"
                   value={formData.mobile}
                   onChange={handleChange}
                   className="appearance-none bg-gray-100 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 outline-primary/70 sm:text-sm"
@@ -142,6 +144,7 @@ export default function RegisterForm() {
                   type="email"
                   autoComplete="email"
                   required
+                  placeholder="Enter your email"
                   value={formData.email}
                   onChange={handleChange}
                   className="appearance-none bg-gray-100 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 outline-primary/70 sm:text-sm"
@@ -162,6 +165,7 @@ export default function RegisterForm() {
                   type={showPassword ? "text" : "password"}
                   autoComplete="new-password"
                   required
+                  placeholder="Enter  password"
                   value={formData.password}
                   onChange={handleChange}
                   className="appearance-none bg-gray-100 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 outline-primary/70 sm:text-sm"
@@ -189,6 +193,7 @@ export default function RegisterForm() {
                   type={showConfirmPassword ? "text" : "password"}
                   autoComplete="new-password"
                   required
+                  placeholder="Enter  conform password"
                   value={formData.conpassword}
                   onChange={handleChange}
                   className="appearance-none bg-gray-100 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 outline-primary/70 sm:text-sm"
