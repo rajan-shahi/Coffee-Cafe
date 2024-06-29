@@ -42,6 +42,8 @@ const Products = () => {
   const [productPrice, setProductPrice] = useState("");
   const [productImage, setProductImage] = useState(null); // State for selected image file
   const [imagePreview, setImagePreview] = useState(null); // State for image preview
+  const [isEditing, setIsEditing] = useState(false); // State for edit mode
+  const [selectedProduct, setSelectedProduct] = useState(null); // State for selected product to edit
 
   // Initialize checkboxItems state on mount
   useEffect(() => {
@@ -73,18 +75,40 @@ const Products = () => {
     setAllChecked(false); // Uncheck "Select All" if any checkbox changes
   };
 
-  // Function to toggle visibility of add product form
-  const toggleAddProduct = () => {
-    setShowAddProduct(!showAddProduct);
-    // Reset form fields and image preview on toggle
-    setProductName("");
-    setProductType("");
-    setProductPrice("");
-    setProductImage(null);
-    setImagePreview(null);
+  // Function to delete a product by ID
+  const handleDeleteProduct = (productId) => {
+    const updatedProducts = products.filter(
+      (product) => product.id !== productId
+    );
+    setProducts(updatedProducts);
+    // Optionally, update checkboxItems state and areAllChecked state if necessary
   };
 
-  // Handle form submission for adding a product
+  // Function to toggle visibility of add/edit product form
+  const toggleAddProduct = (product = null) => {
+    setShowAddProduct(!showAddProduct);
+    setIsEditing(product !== null);
+    setSelectedProduct(product);
+
+    if (product) {
+      // Populate form fields with selected product details for editing
+      setProductName(product.name);
+      setProductType(product.type);
+      setProductPrice(product.price.replace("Rs ", ""));
+      setImagePreview(product.image);
+      // Assuming `productImage` state should be managed separately for editing image
+      setProductImage(null); // Clear image selection for now; you may handle this differently
+    } else {
+      // Reset form fields and image preview on toggle for adding new product
+      setProductName("");
+      setProductType("");
+      setProductPrice("");
+      setProductImage(null);
+      setImagePreview(null);
+    }
+  };
+
+  // Handle form submission for adding or updating a product
   const handleAddProduct = (e) => {
     e.preventDefault();
 
@@ -94,17 +118,33 @@ const Products = () => {
       return;
     }
 
-    // Create new product object
-    const newProduct = {
-      id: products.length + 1,
-      name: productName,
-      type: productType,
-      price: `Rs ${productPrice}`,
-      image: imagePreview || c1, // Use image preview or default image
-    };
+    if (isEditing && selectedProduct) {
+      // Update existing product
+      const updatedProducts = products.map((product) =>
+        product.id === selectedProduct.id
+          ? {
+              ...product,
+              name: productName,
+              type: productType,
+              price: `Rs ${productPrice}`,
+              image: imagePreview || c1, // Use image preview or default image
+            }
+          : product
+      );
+      setProducts(updatedProducts);
+    } else {
+      // Create new product object
+      const newProduct = {
+        id: products.length + 1,
+        name: productName,
+        type: productType,
+        price: `Rs ${productPrice}`,
+        image: imagePreview || c1, // Use image preview or default image
+      };
 
-    // Update products state with new product
-    setProducts([...products, newProduct]);
+      // Update products state with new product
+      setProducts([...products, newProduct]);
+    }
 
     toggleAddProduct(); // Close form after submission
   };
@@ -126,15 +166,6 @@ const Products = () => {
     reader.readAsDataURL(selectedImage);
   };
 
-  // Function to delete a product by ID
-  const handleDeleteProduct = (productId) => {
-    const updatedProducts = products.filter(
-      (product) => product.id !== productId
-    );
-    setProducts(updatedProducts);
-    // Optionally, update checkboxItems state and areAllChecked state if necessary
-  };
-
   return (
     <div className="max-w-screen-xl mx-auto">
       <div className="flex items-start justify-between md:flex">
@@ -146,7 +177,7 @@ const Products = () => {
         </div>
         <div className="mt-3 md:mt-0">
           <button
-            onClick={toggleAddProduct}
+            onClick={() => toggleAddProduct()}
             className="inline-block px-4 py-2 text-white duration-150 font-medium bg-primary rounded-lg hover:bg-primary/95 md:text-sm"
           >
             Add Product
@@ -213,13 +244,14 @@ const Products = () => {
                 <td className="text-right px-6 whitespace-nowrap">
                   <a
                     href="#"
+                    onClick={() => toggleAddProduct(item)}
                     className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg"
                   >
                     Edit
                   </a>
                   <button
                     onClick={() => handleDeleteProduct(item.id)}
-                    className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg"
+                    className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg ml-2"
                   >
                     Delete
                   </button>
@@ -230,11 +262,13 @@ const Products = () => {
         </table>
       </div>
 
-      {/* Overlay for Add Product form */}
+      {/* Overlay for Add/Edit Product form */}
       {showAddProduct && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 md:px-0 px-4">
           <div className="bg-white p-6 w-full max-w-md mx-auto rounded-lg shadow-lg">
-            <h2 className="text-xl font-bold mb-4">Add Product</h2>
+            <h2 className="text-xl font-bold mb-4">
+              {isEditing ? "Edit Product" : "Add Product"}
+            </h2>
             <form onSubmit={handleAddProduct} className="space-y-4">
               <div>
                 <label htmlFor="productName" className="text-sm text-gray-700">
@@ -292,7 +326,7 @@ const Products = () => {
                   onChange={handleImageChange}
                   className="mt-2 p-2 w-full text-sm"
                   accept="image/*"
-                  required
+                  required={!isEditing} // Require image selection only for new products
                 />
                 {imagePreview && (
                   <div className="mt-2">
@@ -309,11 +343,11 @@ const Products = () => {
                   type="submit"
                   className="text-sm px-4 py-2 text-white font-medium bg-primary rounded-lg hover:bg-primary/95 duration-300"
                 >
-                  Save
+                  {isEditing ? "Update" : "Save"}
                 </button>
                 <button
                   type="button"
-                  onClick={toggleAddProduct}
+                  onClick={() => toggleAddProduct()}
                   className="inline-block ml-4 text-sm px-4 py-2 text-gray-600 font-medium bg-gray-200 rounded-lg hover:bg-gray-300 duration-300"
                 >
                   Cancel
