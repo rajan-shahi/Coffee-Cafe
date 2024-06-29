@@ -214,12 +214,12 @@ const Sidebar = ({ setCurrentView }) => {
                   <button
                     key={idx}
                     onClick={() => setCurrentView(item.view)}
-                    className="flex w-full cursor-pointer items-center border-l-2 border-transparent py-2 px-4 text-sm font-medium text-gray-600 outline-none transition-all duration-100 ease-in-out hover:border-l-2 hover:border-rose-600 hover:text-rose-600 focus:border-l-2"
+                    className="flex w-full cursor-pointer items-center border-l-2 border-transparent py-2 px-4 text-sm font-medium text-gray-600 outline-none transition-all duration-100 ease-in-out hover:border-l-2 hover:border-primary hover:text-primary focus:border-l-2"
                   >
                     {item.icon}
                     <span className="ml-4">{item.title}</span>
                     {item.badge && (
-                      <span className="ml-auto rounded-full bg-rose-600 px-2 text-xs text-white">
+                      <span className="ml-auto rounded-full  bg-primary px-2 text-xs text-white">
                         {item.badge}
                       </span>
                     )}
