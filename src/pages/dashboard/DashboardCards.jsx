@@ -14,7 +14,7 @@ const data = [
     total: "Total number of products",
 
     amount: "1200",
-    trendIcon: <MdShoppingCart size={25} />,
+    trendIcon: <MdShoppingCart size={20} />,
   },
   {
     bgColor: "bg-primary",
@@ -23,7 +23,7 @@ const data = [
     total: "Total number of orders",
 
     amount: "500",
-    trendIcon: <FaTruck size={25} />,
+    trendIcon: <FaTruck size={20} />,
   },
   {
     bgColor: "bg-primary",
@@ -32,7 +32,7 @@ const data = [
     total: "Total number of inquiries",
 
     amount: "150",
-    trendIcon: <TbMessage size={25} />,
+    trendIcon: <TbMessage size={20} />,
   },
   {
     bgColor: "bg-primary",
@@ -40,7 +40,7 @@ const data = [
     title: "Total Refunds",
     total: "Total number of refunds",
     amount: "0",
-    trendIcon: <TfiMoney size={25} />,
+    trendIcon: <TfiMoney size={20} />,
   },
   {
     bgColor: "bg-primary",
@@ -48,7 +48,7 @@ const data = [
     title: "Total Revenue",
     total: "Total number of revenue",
     amount: "$23.4k",
-    trendIcon: <GiPlayerPrevious size={25} />,
+    trendIcon: <GiPlayerPrevious size={20} />,
   },
   {
     bgColor: "bg-primary",
@@ -56,7 +56,7 @@ const data = [
     title: "Total Suppliers",
     total: "Total number of suppliers",
     amount: "670",
-    trendIcon: <VscSend size={25} />,
+    trendIcon: <VscSend size={20} />,
   },
 ];
 
