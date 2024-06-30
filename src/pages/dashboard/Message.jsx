@@ -12,7 +12,7 @@ const Message = () => {
         "https://images.unsplash.com/photo-1511485977113-f34c92461ad9?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ",
       name: "Mina Sapkota",
       phone_number: "9866448106",
-      location: "Kathmandu Nepla",
+      location: "Kathmandu Nepal",
       order: "Premium Coffee",
       date: "2024-06-30",
       replyMessage: null, // Initially no reply message
@@ -184,6 +184,7 @@ const Message = () => {
                       >
                         <input
                           type="text"
+                          name="text"
                           value={replyText}
                           onChange={handleInputChange}
                           className="border border-gray-300 rounded-md px-3 py-2 outline-none md:w-96"
