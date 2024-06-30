@@ -53,9 +53,9 @@ const data = [
   {
     bgColor: "bg-primary",
     iconColor: "text-white",
-    title: "Total Revenue",
-    total: "Total number of revenue",
-    amount: "$23.4k",
+    title: "Total Services",
+    total: "Total number of services",
+    amount: "12",
     trendIcon: <GiPlayerPrevious size={20} />,
   },
 ];

@@ -7,6 +7,7 @@ import Products from "../../pages/dashboard/Products";
 import { BsPeopleFill } from "react-icons/bs";
 import Suppliers from "../../pages/dashboard/Suppliers";
 import Refund from "../../pages/dashboard/Refund";
+import DasServices from "../../pages/dashboard/DasServices";
 
 const DashboardLayout = () => {
   const [currentView, setCurrentView] = useState("dashboard");
@@ -25,6 +26,8 @@ const DashboardLayout = () => {
         return <Products />;
       case "suppliers":
         return <Suppliers />;
+        case "dasServices":
+        return <DasServices />;
       case "refund":
         return <Refund />;
       default:

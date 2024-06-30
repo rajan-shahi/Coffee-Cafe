@@ -140,7 +140,7 @@ const Sidebar = ({ setCurrentView }) => {
           view: "refund",
         },
         {
-          title: "Revenue",
+          title: "Services",
           icon: (
             <svg
               className="h-5 w-5"
@@ -157,7 +157,7 @@ const Sidebar = ({ setCurrentView }) => {
               />
             </svg>
           ),
-          view: "#",
+          view: "dasServices",
         },
       ],
     },
