@@ -157,7 +157,7 @@ const Sidebar = ({ setCurrentView }) => {
               />
             </svg>
           ),
-          view: "#",
+          view: "refund",
         },
       ],
     },

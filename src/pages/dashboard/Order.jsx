@@ -6,7 +6,7 @@ const Order = () => {
     {
       id: 1,
       invoice: "Muna Sapkota",
-      date: "07 February,2024",
+      date: "07 February, 2024",
       amount: "10",
       status: "Complete",
       location: "Kathmandu",
@@ -15,7 +15,7 @@ const Order = () => {
     {
       id: 2,
       invoice: "Jun Parsad Rokaya",
-      date: "09 January,2024",
+      date: "09 January, 2024",
       amount: "250",
       status: "Canceled",
       location: "Pokhara",
@@ -54,11 +54,8 @@ const Order = () => {
     <div>
       <div className="sm:flex sm:items-center sm:justify-between flex-col sm:flex-row">
         <div>
-          <p className="flex-1  text-xl  text-gray-800">
-            Total orders
-          </p>
-
-          <p className=" mt-1 text-gray-600 text-sm">Total number of orders</p>
+          <p className="flex-1 text-xl text-gray-800">Total orders</p>
+          <p className="mt-1 text-gray-600 text-sm">Total number of orders</p>
         </div>
         <div className="mt-4 sm:mt-0">
           <div className="flex items-center justify-start sm:justify-end">
@@ -84,23 +81,23 @@ const Order = () => {
       <div className="mt-6 overflow-hidden rounded-xl border shadow">
         <table className="min-w-full border-separate border-spacing-y-2 border-spacing-x-2">
           <thead className="hidden border-b lg:table-header-group">
-            <tr className=" text-left ">
-              <th className="whitespace-normal py-3    text-sm text-gray-700 sm:px-6">
+            <tr className="text-left">
+              <th className="whitespace-normal py-3 text-sm text-gray-700 sm:px-6">
                 Full Name
               </th>
-              <th className="whitespace-normal py-3  text-sm text-gray-700 sm:px-6">
+              <th className="whitespace-normal py-3 text-sm text-gray-700 sm:px-6">
                 Order Date
               </th>
-              <th className="whitespace-normal py-3  text-sm text-gray-700 sm:px-6">
+              <th className="whitespace-normal py-3 text-sm text-gray-700 sm:px-6">
                 Order Location
               </th>
-              <th className="whitespace-normal py-3  text-sm text-gray-700 sm:px-6">
+              <th className="whitespace-normal py-3 text-sm text-gray-700 sm:px-6">
                 Order Name
               </th>
-              <th className="whitespace-normal py-3  text-sm text-gray-700 sm:px-6">
+              <th className="whitespace-normal py-3 text-sm text-gray-700 sm:px-6">
                 Order Quantity
               </th>
-              <th className="whitespace-normal py-3  text-sm text-gray-700 sm:px-6">
+              <th className="whitespace-normal py-3 text-sm text-gray-700 sm:px-6">
                 Status
               </th>
             </tr>
@@ -109,7 +106,7 @@ const Order = () => {
           <tbody className="lg:border-gray-300">
             {orders.map((order) => (
               <tr key={order.id}>
-                <td className="whitespace-no-wrap py-3 text-sm  text-gray-500 font-normal sm:px-6">
+                <td className="whitespace-no-wrap py-3 text-sm text-gray-500 font-normal sm:px-6">
                   {order.invoice}
                   <div className="mt-1 lg:hidden">
                     <p className="font-normal text-gray-500">{order.date}</p>

@@ -113,25 +113,26 @@ const Products = () => {
     e.preventDefault();
 
     // Validate form fields
-    if (!productName || !productType || !productPrice || !productImage) {
-      alert("Please fill all fields and select an image.");
+    if (!productName || !productType || !productPrice) {
+      alert("Please fill all fields.");
       return;
     }
 
     if (isEditing && selectedProduct) {
-      // Update existing product
+      // Update existing product immediately on any change
+      const updatedProduct = {
+        ...selectedProduct,
+        name: productName,
+        type: productType,
+        price: `Rs ${productPrice}`,
+        image: imagePreview || c1, // Use image preview or default image
+      };
       const updatedProducts = products.map((product) =>
-        product.id === selectedProduct.id
-          ? {
-              ...product,
-              name: productName,
-              type: productType,
-              price: `Rs ${productPrice}`,
-              image: imagePreview || c1, // Use image preview or default image
-            }
-          : product
+        product.id === selectedProduct.id ? updatedProduct : product
       );
       setProducts(updatedProducts);
+      // Optionally close form after update
+      toggleAddProduct();
     } else {
       // Create new product object
       const newProduct = {
@@ -144,9 +145,10 @@ const Products = () => {
 
       // Update products state with new product
       setProducts([...products, newProduct]);
-    }
 
-    toggleAddProduct(); // Close form after submission
+      // Close form after submission
+      toggleAddProduct();
+    }
   };
 
   // Handle image selection and preview
