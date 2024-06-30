@@ -46,7 +46,7 @@ const Suppliers = () => {
         <h3 className="text-gray-800   text-xl">Total Suppliers</h3>
         <p className="text-gray-600 mt-1 text-sm">Total number of suppliers</p>
       </div>
-      <div className="mt-12 shadow-sm border rounded-lg overflow-x-auto">
+      <div className="mt-8 shadow-sm border rounded-lg overflow-x-auto">
         <table className="w-full table-auto text-sm text-left">
           <thead className="bg-gray-50 text-gray-600 text-sm border-b">
             <tr>
