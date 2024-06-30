@@ -57,7 +57,7 @@ const Refund = () => {
       </div>
       <div className="mt-12 shadow-sm border rounded-lg overflow-x-auto">
         <table className="w-full table-auto text-sm text-left">
-          <thead className="bg-gray-50 text-gray-600 font-medium border-b">
+          <thead className="bg-gray-50 text-gray-600  text-sm border-b">
             <tr className="divide-x">
               <th className="py-3 px-6">Full Name</th>
               <th className="py-3 px-6">Refund Type</th>
