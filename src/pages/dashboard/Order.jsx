@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Order = () => {
-  // Example data array (replace with your actual data source)
-  const orders = [
+  const [orders, setOrders] = useState([
     {
       id: 1,
       invoice: "Muna Sapkota",
@@ -48,7 +47,17 @@ const Order = () => {
       location: "Kathmandu",
       order: "Premium Coffee",
     },
-  ];
+  ]);
+
+  const handleStatusChange = (id, newStatus) => {
+    const updatedOrders = orders.map((order) => {
+      if (order.id === id) {
+        return { ...order, status: newStatus };
+      }
+      return order;
+    });
+    setOrders(updatedOrders);
+  };
 
   return (
     <div>
@@ -129,24 +138,30 @@ const Order = () => {
                         ? "bg-blue-600 text-white"
                         : order.status === "Canceled"
                         ? "bg-red-200 text-red-500"
-                        : "bg-green-400 text-white" // Changed to green for Pending status
+                        : "bg-green-400 text-white"
                     } py-2 px-3 text-left text-xs font-medium lg:hidden`}
                   >
                     {order.status}
                   </div>
                 </td>
                 <td className="whitespace-no-wrap hidden py-3 text-sm font-normal text-gray-500 sm:px-6 lg:table-cell">
-                  <div
-                    className={`inline-flex items-center rounded-full ${
+                  <select
+                    value={order.status}
+                    onChange={(e) =>
+                      handleStatusChange(order.id, e.target.value)
+                    }
+                    className={`inline-flex items-center rounded-full py-2 px-3 text-xs ${
                       order.status === "Complete"
                         ? "bg-blue-600 text-white"
                         : order.status === "Canceled"
                         ? "bg-red-200 text-red-500"
-                        : "bg-green-400 text-white" // Changed to green for Pending status
-                    } py-2 px-3 text-xs`}
+                        : "bg-green-400 text-white"
+                    }`}
                   >
-                    {order.status}
-                  </div>
+                    <option value="Pending">Pending</option>
+                    <option value="Complete">Complete</option>
+                    <option value="Canceled">Canceled</option>
+                  </select>
                 </td>
               </tr>
             ))}
