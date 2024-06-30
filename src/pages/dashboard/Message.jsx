@@ -10,32 +10,35 @@ const Message = () => {
       id: 1,
       avatar:
         "https://images.unsplash.com/photo-1511485977113-f34c92461ad9?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ",
-      name: "Rajan Bahadur Shahi",
+      name: "Liam James",
       phone_number: "9866448106",
       location: "Kathmandu Nepla",
       order: "Premium Coffee",
       date: "2024-06-30",
       replyMessage: null, // Initially no reply message
+      replyDate: null,
     },
     {
       id: 2,
       avatar: "https://randomuser.me/api/portraits/men/86.jpg",
-      name: "Loki Chaulagain",
+      name: "Olivia Emma",
       phone_number: "9866448106",
       location: "Surkhet Nepal",
       order: "Hot Coffee",
       date: "2024-06-29",
       replyMessage: null,
+      replyDate: null,
     },
     {
       id: 3,
       avatar: "https://randomuser.me/api/portraits/women/79.jpg",
-      name: "Subeena Gurung",
+      name: "William Benjamin",
       phone_number: "9866448106",
       location: "Pokhara Nepal",
       order: "Cold Coffee",
       date: "2024-06-28",
       replyMessage: null,
+      replyDate: null,
     },
     {
       id: 4,
@@ -46,17 +49,19 @@ const Message = () => {
       order: "Milk Coffee",
       date: "2024-06-27",
       replyMessage: null,
+      replyDate: null,
     },
     {
       id: 5,
       avatar:
         "https://images.unsplash.com/photo-1439911767590-c724b615299d?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ",
-      name: "Muna Sapkota",
+      name: "Amelia Elijah",
       phone_number: "9866448106",
       location: "Dang Nepal",
       order: "Hot Coffee",
       date: "2024-06-26",
       replyMessage: null,
+      replyDate: null,
     },
   ]);
 
@@ -73,9 +78,19 @@ const Message = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (replyText.trim() !== "") {
-      // Update tableItems with the reply message
+      // Get current timestamp
+      const currentDate = new Date();
+      const replyTime = currentDate.toLocaleString(); // Adjust format as needed
+
+      // Update tableItems with the reply message and reply time
       const updatedItems = tableItems.map((item) =>
-        item.id === replyingTo.id ? { ...item, replyMessage: replyText } : item
+        item.id === replyingTo.id
+          ? {
+              ...item,
+              replyMessage: replyText,
+              replyDate: replyTime,
+            }
+          : item
       );
       setTableItems(updatedItems);
 
@@ -144,12 +159,16 @@ const Message = () => {
                 {item.replyMessage && (
                   <tr>
                     <td colSpan="6" className="px-6 py-4">
-                      <p className="text-gray-700">
-                        <span className="font-medium">{item.name}</span>{" "}
-                        replied:
-                        <br />
-                        {item.replyMessage}
-                      </p>
+                      <div className="flex items-center mb-2">
+                        <span className="text-gray-600">Reply:</span>
+                        <span className="ml-2 text-gray-700">
+                          {item.replyMessage}
+                        </span>
+                      </div>
+                      <div className="text-sm text-gray-500">
+                        <span className="mr-2">Reply date:</span>
+                        <span>{item.replyDate}</span>
+                      </div>
                     </td>
                   </tr>
                 )}
