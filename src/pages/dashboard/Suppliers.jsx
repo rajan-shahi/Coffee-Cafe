@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 import c1 from "../../assets/coffee2.png";
 
 const Suppliers = () => {
-  const tableItems = [
+  const [tableItems, setTableItems] = useState([
     {
       avatar: c1,
       order: "Hot Coffee",
@@ -43,7 +45,13 @@ const Suppliers = () => {
       quantity: "30",
       received: true,
     },
-  ];
+  ]);
+
+  const toggleReceived = (index) => {
+    const newItems = [...tableItems];
+    newItems[index].received = !newItems[index].received;
+    setTableItems(newItems);
+  };
 
   return (
     <div className="max-w-screen-xl mx-auto">
@@ -60,6 +68,7 @@ const Suppliers = () => {
               <th className="py-3 px-6">Suppliers Location</th>
               <th className="py-3 px-6">Suppliers Quantity</th>
               <th className="py-3 px-6">Received</th>
+              <th className="py-3 px-6">Action</th>
             </tr>
           </thead>
           <tbody className="text-gray-600 divide-y">
@@ -85,9 +94,27 @@ const Suppliers = () => {
                     item.received
                       ? "bg-green-100 text-green-800"
                       : "bg-red-100 text-red-800"
-                  }`}
+                  } flex items-center justify-center`}
                 >
-                  {item.received ? "Received" : "Not Received"}
+                  {item.received ? (
+                    <>
+                      <FontAwesomeIcon icon={faCheck} />
+                      <span className="ml-2">Received</span>
+                    </>
+                  ) : (
+                    <>
+                      <FontAwesomeIcon icon={faTimes} />
+                      <span className="ml-2">Not Received</span>
+                    </>
+                  )}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <button
+                    onClick={() => toggleReceived(idx)}
+                    className="  bg-primary hover:bg-primary/95 duration-500 text-white py-1 px-3 rounded"
+                  >
+                    Change
+                  </button>
                 </td>
               </tr>
             ))}
