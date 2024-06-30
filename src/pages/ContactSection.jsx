@@ -17,7 +17,7 @@ const ContactSection = () => {
   };
 
   return (
-    <div className="max-w-6xl max-lg:max-w-3xl mx-auto bg-secondary rounded-lg">
+    <div className="max-w-6xl max-lg:max-w-3xl mx-auto bg-primary rounded-lg">
       <div className="grid lg:grid-cols-2 items-center gap-14 sm:p-8 p-6 font-[sans-serif]">
         <div>
           <h1
@@ -121,7 +121,7 @@ const ContactSection = () => {
                   id="lastName"
                   name="number"
                   required
-                  placeholder="enter your mobile number"
+                  placeholder="enter your  number"
                   className="w-full px-3 py-2 bg-white border border-gray-400 rounded-md outline-none"
                 />
               </div>
