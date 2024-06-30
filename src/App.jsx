@@ -14,7 +14,16 @@ import About from "./pages/About.jsx";
 import DashboardLayout from "./components/dashboard/DashboardLayout.jsx";
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // Retrieve isLoggedIn state from localStorage or sessionStorage
+  const [isLoggedIn, setIsLoggedIn] = useState(() => {
+    const storedLoggedIn = sessionStorage.getItem("isLoggedIn");
+    return storedLoggedIn ? JSON.parse(storedLoggedIn) : false;
+  });
+
+  // Save isLoggedIn state to sessionStorage on change
+  useEffect(() => {
+    sessionStorage.setItem("isLoggedIn", JSON.stringify(isLoggedIn));
+  }, [isLoggedIn]);
 
   useEffect(() => {
     AOS.init({
