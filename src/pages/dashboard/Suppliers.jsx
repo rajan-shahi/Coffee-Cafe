@@ -7,43 +7,48 @@ const Suppliers = () => {
       avatar: c1,
       order: "Hot Coffee",
       date: "1 October, 2024",
-      location: "kathmandu Nepal",
+      location: "Kathmandu, Nepal",
       quantity: "150",
+      received: true,
     },
     {
       avatar: c1,
       order: "Premium Coffee",
       date: "14 November, 2024",
-      location: "Surkhet Nepal",
+      location: "Surkhet, Nepal",
       quantity: "90",
+      received: false,
     },
     {
       avatar: c1,
       order: "Cold Coffee",
       date: "15 December, 2024",
-      location: "Nepalgunj Nepal",
+      location: "Nepalgunj, Nepal",
       quantity: "50",
+      received: true,
     },
     {
       avatar: c1,
       order: "Milk Coffee",
-      date: "09 January,2024",
-      location: "Dhangadi Nepal",
+      date: "9 January, 2024",
+      location: "Dhangadi, Nepal",
       quantity: "80",
+      received: false,
     },
     {
       avatar: c1,
       order: "Premium Coffee",
       date: "15 October, 2024",
-      location: "Pokhara Nepal",
+      location: "Pokhara, Nepal",
       quantity: "30",
+      received: true,
     },
   ];
 
   return (
-    <div className="max-w-screen-xl mx-auto ">
+    <div className="max-w-screen-xl mx-auto">
       <div className="max-w-lg">
-        <h3 className="text-gray-800   text-xl">Total Suppliers</h3>
+        <h3 className="text-gray-800 text-xl">Total Suppliers</h3>
         <p className="text-gray-600 mt-1 text-sm">Total number of suppliers</p>
       </div>
       <div className="mt-8 shadow-sm border rounded-lg overflow-x-auto">
@@ -54,6 +59,7 @@ const Suppliers = () => {
               <th className="py-3 px-6">Suppliers Date</th>
               <th className="py-3 px-6">Suppliers Location</th>
               <th className="py-3 px-6">Suppliers Quantity</th>
+              <th className="py-3 px-6">Received</th>
             </tr>
           </thead>
           <tbody className="text-gray-600 divide-y">
@@ -63,7 +69,7 @@ const Suppliers = () => {
                   <img
                     src={item.avatar}
                     className="w-10 h-10 rounded-full"
-                    alt={item.name}
+                    alt={item.order}
                   />
                   <div>
                     <span className="block text-gray-700 text-sm font-medium">
@@ -74,6 +80,15 @@ const Suppliers = () => {
                 <td className="px-6 py-4 whitespace-nowrap">{item.date}</td>
                 <td className="px-6 py-4 whitespace-nowrap">{item.location}</td>
                 <td className="px-6 py-4 whitespace-nowrap">{item.quantity}</td>
+                <td
+                  className={`px-6 py-4 whitespace-nowrap ${
+                    item.received
+                      ? "bg-green-100 text-green-800"
+                      : "bg-red-100 text-red-800"
+                  }`}
+                >
+                  {item.received ? "Received" : "Not Received"}
+                </td>
               </tr>
             ))}
           </tbody>
