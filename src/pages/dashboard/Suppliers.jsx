@@ -50,7 +50,7 @@ const Suppliers = () => {
         <table className="w-full table-auto text-sm text-left">
           <thead className="bg-gray-50 text-gray-600 text-sm border-b">
             <tr>
-              <th className="py-3 px-6">Suppliers Name</th>
+              <th className="py-3 px-6">Suppliers Type</th>
               <th className="py-3 px-6">Suppliers Date</th>
               <th className="py-3 px-6">Suppliers Location</th>
               <th className="py-3 px-6">Suppliers Quantity</th>
