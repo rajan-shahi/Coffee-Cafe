@@ -40,7 +40,6 @@ const Order = () => {
   ]);
 
   const [showContactForm, setShowContactForm] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(null); // Track selected item
 
   const updateQuantity = (itemId, newQuantity) => {
     const updatedCartItems = cartItems.map((item) =>
@@ -72,17 +71,12 @@ const Order = () => {
     return calculateSubtotal() + calculateTax();
   };
 
-  const handleOrderClick = (item) => {
-    setSelectedItem(item); // Set the selected item
-    setShowContactForm(true); // Show the contact form
-  };
-
   const ContactForm = ({ onClose }) => {
     const [formData, setFormData] = useState({
       name: "",
       email: "",
       message: "",
-      order: selectedItem ? selectedItem.name : "", // Set initial value based on selectedItem
+      order: "",
       number: "",
     });
 
@@ -96,29 +90,17 @@ const Order = () => {
 
     const handleSubmit = (e) => {
       e.preventDefault();
-
-      const { name, email, message, order, number } = formData;
-
-      // Format the email body
-      const emailBody = `Name: ${name}\nEmail: ${email}\nOrder Name: ${order}\nQuantity: ${number}\nMessage: ${message}`;
-
-      // Open mailto link with updated email address
-      window.open(
-        `mailto:sujanbista2025@gmail.com?subject=New Order&body=${encodeURIComponent(
-          emailBody
-        )}`
-      );
-
+      // Handle form submission
+      console.log(formData);
       // Display toast notification
-      toast.success("Order sent successfully!");
-
+      toast.success("Order Now successfully!");
       // Close the form after submission
       onClose();
     };
 
     return (
       <div className="md:px-0 px-4 fixed top-0 left-0 w-full h-full flex justify-center items-center bg-gray-900 bg-opacity-80 z-50">
-        <div className="bg-white p-6 rounded-md md:mt-12 max-w-xl w-full relative">
+        <div className="bg-white p-6 rounded-md md:mt-12 max-w-md w-full relative">
           <button
             onClick={onClose}
             className="absolute top-3 right-3 text-gray-700 hover:text-gray-900"
@@ -141,7 +123,7 @@ const Order = () => {
           <h2 className="text-2xl tracking-wider font-cursive font-semibold mb-5 text-primary">
             Order Now
           </h2>
-          <form onSubmit={handleSubmit} className=" grid grid-cols-2 gap-10">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label
                 htmlFor="name"
@@ -264,7 +246,6 @@ const Order = () => {
                 item={item}
                 onUpdateQuantity={updateQuantity}
                 onRemoveItem={removeItem}
-                onOrderClick={() => handleOrderClick(item)} // Pass function to handle order click
               />
             ))}
           </div>
@@ -278,7 +259,7 @@ const Order = () => {
               Order Summary
             </h3>
 
-            <ul className="mt-6 space-y-3">
+            <ul className="text-gray-800 mt-6 space-y-3">
               <li className="flex justify-between">
                 <span>Subtotal</span>
                 <span>{calculateSubtotal().toFixed(2)}</span>
@@ -293,12 +274,14 @@ const Order = () => {
               </li>
             </ul>
 
-            <button
-              onClick={() => setShowContactForm(true)}
-              className="mt-8 w-full inline-flex justify-center py-2 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-            >
-              Order Now
-            </button>
+            <div className="mt-6 space-y-3">
+              <button
+                onClick={() => setShowContactForm(true)}
+                className="w-full py-2 bg-primary hover:bg-primary/90 duration-500 text-white font-semibold rounded-md"
+              >
+                Order Now
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -307,78 +290,83 @@ const Order = () => {
         <ContactForm onClose={() => setShowContactForm(false)} />
       )}
 
-      <Toaster position="bottom-center" />
+      <Toaster />
     </div>
   );
 };
 
-const CartItem = ({ item, onUpdateQuantity, onRemoveItem, onOrderClick }) => {
-  const { id, name, size, price, quantity, image } = item;
-
+const CartItem = ({ item, onUpdateQuantity, onRemoveItem }) => {
   const handleQuantityChange = (e) => {
-    onUpdateQuantity(id, parseInt(e.target.value, 10));
-  };
-
-  const handleRemoveClick = () => {
-    onRemoveItem(id);
+    onUpdateQuantity(item.id, parseInt(e.target.value));
   };
 
   return (
-    <div className="flex items-center justify-between border-b border-gray-200 pb-4">
-      <div className="flex items-center space-x-4">
-        <img src={image} alt={name} className="h-16 w-16 object-cover" />
-        <div>
-          <h3 className="text-lg font-semibold">{name}</h3>
-          <p className="text-gray-500">{size}</p>
+    <div className="grid grid-cols-3 items-start gap-4 border-b pb-4">
+      <div className="col-span-2 flex items-start gap-4">
+        <div className="w-20 h-20 max-sm:w-24 max-sm:h-24 bg-gray-100 p-2 object-cover rounded-md">
+          <img
+            src={item.image}
+            alt={item.name}
+            className="w-full h-full hover:rotate-[60deg] duration-700 object-contain"
+          />
+        </div>
+
+        <div className="flex flex-col">
+          <h3 className="text-base font-semibold text-gray-800">{item.name}</h3>
+          <p className="text-xs font-semibold text-gray-500 mt-0.5">
+            Name: {item.size}
+          </p>
+
+          <button
+            onClick={() => onRemoveItem(item.id)}
+            type="button"
+            className="mt-4 font-semibold text-red-500 text-xs flex items-center gap-1"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-4 fill-current inline"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fillRule="evenodd"
+                d="M19 7a1 1 0 0 0-1 1v11.191A1.92 1.92 0 0 1 15.99 21H8.01A1.92 1.92 0 0 1 6 19.191V8a1 1 0 0 0-2 0v11.191A3.918 3.918 0 0 0 8.01 23h7.98A3.918 3.918 0 0 0 20 19.191V8a1 1 0 0 0-1-1Zm1-3h-4V2a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v2H4a1 1 0 0 0 0 2h16a1 1 0 0 0 0-2ZM10 4V3h4v1Z"
+                clipRule="evenodd"
+              />
+              <path
+                fillRule="evenodd"
+                d="M11 17v-7a1 1 0 0 0-2 0v7a1 1 0 0 0 2 0Zm4 0v-7a1 1 0 0 0-2 0v7a1 1 0 0 0 2 0Z"
+                clipRule="evenodd"
+              />
+            </svg>
+            REMOVE
+          </button>
         </div>
       </div>
-      <div className="flex items-center space-x-4">
-        <input
-          type="number"
-          className="border border-gray-300 rounded-md px-3 py-1 w-20 text-center"
-          value={quantity}
-          onChange={handleQuantityChange}
-          min="1"
-        />
-        <p className="text-lg font-semibold">{(price * quantity).toFixed(2)}</p>
-        <button
-          onClick={handleRemoveClick}
-          className="text-red-500 hover:text-red-600 focus:outline-none"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+
+      <div className="ml-auto">
+        <h4 className="text-lg max-sm:text-base font-semibold text-gray-700">
+          {(item.price * item.quantity).toFixed(2)}
+        </h4>
+
+        <div className="flex items-center mt-4">
+          <button
+            onClick={() => onUpdateQuantity(item.id, item.quantity - 1)}
+            type="button"
+            className="px-3 py-1 border border-gray-300 text-gray-800 text-xs rounded-l-md"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </button>
-        <button
-          onClick={onOrderClick} // Handle order click
-          className="text-green-500 hover:text-green-600 focus:outline-none"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+            -
+          </button>
+          <span className="px-4 py-1 bg-gray-100 text-gray-800 text-sm font-semibold">
+            {item.quantity}
+          </span>
+          <button
+            onClick={() => onUpdateQuantity(item.id, item.quantity + 1)}
+            type="button"
+            className="px-3 py-1 border border-gray-300 text-gray-800 text-xs rounded-r-md"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
-        </button>
+            +
+          </button>
+        </div>
       </div>
     </div>
   );
