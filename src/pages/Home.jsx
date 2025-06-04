@@ -5,7 +5,6 @@ import Banner from "../components/Banner/Banner";
 import AppStore from "../components/AppStore/AppStore";
 import Testimonials from "../components/Testimonials/Testimonials";
 
-
 export default function Home() {
   return (
     <div>
